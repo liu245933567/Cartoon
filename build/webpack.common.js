@@ -52,13 +52,13 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.vue', '.less'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.vue', '.less', '.scss'],
     alias: {
       '@': resolve('../src'),
       '@components': resolve('../src/components'),
       '@images': resolve('../src/assets/images'),
       '@utils':resolve('../src/utils'),
-      '@styles':resolve('../src/styles'),
+      '@styles':resolve(__dirname, '../src/styles'),
       '@views':resolve('../src/views'),
       '@services':resolve('../src/services')
     }
