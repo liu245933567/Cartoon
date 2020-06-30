@@ -1,13 +1,13 @@
-import * as React from 'react'
-import { HashRouter as Router, Route, Link } from "react-router-dom"
-import loadable from '@loadable/component'
+import * as React from 'react';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import loadable from '@loadable/component';
 
-const HomeComponent = loadable(() => import(/* webpackChunkName: "home" */ './views/Home'))
-const AboutComponent = loadable(() => import(/* webpackChunkName: "about" */ './views/About'))
+const HomeComponent = loadable(() => import(/* webpackChunkName: "home" */ './views/Home'));
+const AboutComponent = loadable(() => import(/* webpackChunkName: "about" */ './views/About'));
 
 class App extends React.Component {
-  
-  
+
+
   render() {
 
     return (
@@ -26,8 +26,8 @@ class App extends React.Component {
         </Router>
         <p className="aps">hahahaahhahhahahaha</p>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;

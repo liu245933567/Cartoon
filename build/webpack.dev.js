@@ -1,9 +1,10 @@
-const webpack = require('webpack')
-const merge = require('webpack-merge')
-const baseConfig = require('./webpack.common')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require("path")
-
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const baseConfig = require('./webpack.common');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const path = require('path');
+const proxyHost = 'http://dev.yanyuge.xyz:3000';
 const devConfig = {
   mode: 'development',
   devtool: 'eval-source-map',
@@ -16,16 +17,24 @@ const devConfig = {
     },
     inline: true,
     hot: true,
-    // proxy: {
-    //   '/api/v1': {
-    //     target: '',
-    //     ws: true,
-    //     changeOrigin: true,
-    //     pathRewrite: {
-    //       '^/api/v1': '/api/v1'
-    //     }
-    //   }
-    // }
+    contentBase: path.resolve(__dirname, '../dist'),
+    proxy: {
+      '/cartoon': {
+        target: proxyHost
+        // pathRewrite: {
+        //   '/api': ''
+        // }
+      },
+      '/user': {
+        target: proxyHost
+      },
+      '/admin': {
+        target: proxyHost
+      },
+      '/video': {
+        target: proxyHost
+      }
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -33,6 +42,8 @@ const devConfig = {
       template: 'public/index.html',
       inject: true
     }),
+    new HardSourceWebpackPlugin(),
+    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ],
   module: {
@@ -40,20 +51,20 @@ const devConfig = {
       {
         test: /\.js$/,
         use: {
-          loader: "eslint-loader",
+          loader: 'eslint-loader',
           options: {
-            enforce: "pre", //强制之前执行
-          },
-        },
+            enforce: 'pre' //强制之前执行
+          }
+        }
       },
       {
         test: /\.css$/, // 正则匹配文件路径
         exclude: /node_modules/,
         use: [
           // 注意loader生效是从下往上的
-          "style-loader",
-          "css-loader",
-        ],
+          'style-loader',
+          'css-loader'
+        ]
       },
       {
         // for ant design
@@ -68,33 +79,33 @@ const devConfig = {
             options: {
               lessOptions: { // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
                 // modifyVars: theme,
-                javascriptEnabled: true,
-              },
+                javascriptEnabled: true
+              }
             }
           }
         ]
-       },
-    
+      },
+
       {
         test: /\.scss$/,
-        include: path.join(__dirname, "../src"), // 只让loader解析我们src底下自己写的文件
+        include: path.join(__dirname, '../src'), // 只让loader解析我们src底下自己写的文件
         use: [
-          "style-loader",
-          "css-loader",
-          "postcss-loader",
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               // 应换成下面的
               sassOptions: {
-                includePaths: [path.join(__dirname, "../src/styles")],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
-}
+                includePaths: [path.join(__dirname, '../src/styles')]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
 
-module.exports = merge(baseConfig, devConfig)
+module.exports = merge(baseConfig, devConfig);

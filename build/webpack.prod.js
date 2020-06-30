@@ -1,12 +1,13 @@
-const merge = require('webpack-merge')
-const path = require("path")
-const baseConfig = require('./webpack.common')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
-const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin")
-const webpack = require('webpack')
+const merge = require('webpack-merge');
+const path = require('path');
+const baseConfig = require('./webpack.common');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const webpack = require('webpack');
+const cssProcessor = require('cssnano');
 
 const prodConfig = {
   mode: 'production',
@@ -15,7 +16,7 @@ const prodConfig = {
     // ...
     minimizer: [
       new OptimizeCssAssetsPlugin({
-        cssProcessor: require('cssnano'), // 使用 cssnano 压缩器
+        cssProcessor, // 使用 cssnano 压缩器
         cssProcessorOptions: {
           reduceIdents: false,
           autoprefixer: false,
@@ -40,7 +41,7 @@ const prodConfig = {
       }),
       // 告诉 Webpack 使用了哪些动态链接库
       new webpack.DllReferencePlugin({
-        manifest: path.join(__dirname, `../dll/vendor.manifest.json`)
+        manifest: path.join(__dirname, '../dll/vendor.manifest.json')
       })
     ],
     splitChunks: {
@@ -57,7 +58,7 @@ const prodConfig = {
           chunks: 'initial',
           priority: 10, // 优先级
           reuseExistingChunk: false, // 允许复用已经存在的代码块
-          test: /node_modules\/(.*)\.js/, // 只打包初始时依赖的第三方
+          test: /node_modules\/(.*)\.js/ // 只打包初始时依赖的第三方
         },
         common: {
           name: 'common',
@@ -107,8 +108,8 @@ const prodConfig = {
               publicPath: '../'
             }
           },
-          "css-loader",
-        ],
+          'css-loader'
+        ]
       },
       {
         // for ant design
@@ -128,8 +129,8 @@ const prodConfig = {
             options: {
               lessOptions: { // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
                 // modifyVars: theme,
-                javascriptEnabled: true,
-              },
+                javascriptEnabled: true
+              }
             }
           }
         ]
@@ -137,7 +138,7 @@ const prodConfig = {
 
       {
         test: /\.scss$/,
-        include: path.join(__dirname, "../src"), // 只让loader解析我们src底下自己写的文件
+        include: path.join(__dirname, '../src'), // 只让loader解析我们src底下自己写的文件
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -145,20 +146,21 @@ const prodConfig = {
               publicPath: '../'
             }
           },
-          "css-loader",
-          "postcss-loader",
+          'css-loader',
+          'postcss-loader',
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               // 应换成下面的
               sassOptions: {
-                includePaths: [path.join(__dirname, "../src/styles")],
-              },
-            },
-          },
-        ],
-      },
+                includePaths: [path.join(__dirname, '../src/styles')]
+              }
+            }
+          }
+        ]
+      }
     ]
-  },
-}
-module.exports = merge(baseConfig, prodConfig)
+  }
+};
+
+module.exports = merge(baseConfig, prodConfig);
