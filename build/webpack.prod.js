@@ -10,7 +10,7 @@ const webpack = require('webpack')
 
 const prodConfig = {
   mode: 'production',
-  devtool: 'source-map',
+  // devtool: 'source-map',
   optimization: { // 性能配置
     // ...
     minimizer: [
