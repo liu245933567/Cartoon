@@ -1,12 +1,12 @@
 const path = require("path")
-const {resolve} = require("path")
+const { resolve } = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
-// const postcssPresetEnv = require("postcss-preset-env")
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname, "../src/index.tsx"),
   output: {
-    filename: "bundle.js",
+    filename: "js/[name].[hash:8].js",
     path: path.join(__dirname, "../dist"),
   },
   module: {
@@ -22,56 +22,7 @@ module.exports = {
         // 排除node_modules底下的
         exclude: /node_modules/,
       },
-      {
-        test: /\.css$/, // 正则匹配文件路径
-        exclude: /node_modules/,
-        use: [
-          // 注意loader生效是从下往上的
-          "style-loader",
-          "css-loader",
-        ],
-      },
-      {
-        // for ant design
-        test: /\.less$/,
-        include: path.resolve('../node_modules'),
-        use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader',
-          {
-            loader: 'less-loader',
-            options: {
-              lessOptions: { // 如果使用less-loader@5，请移除 lessOptions 这一级直接配置选项。
-                // modifyVars: theme,
-                javascriptEnabled: true,
-              },
-            }
-          }
-        ]
-       },
-    
-      {
-        test: /\.scss$/,
-        include: path.join(__dirname, "../src"), // 只让loader解析我们src底下自己写的文件
-        use: [
-          "style-loader",
-          "css-loader",
-          "postcss-loader",
-          {
-            loader: "sass-loader",
-            // include: resolve("../src"),
-            options: {
-              // 这个在最新的scss版本中已经不能用了2020-01-05更新，额其实一两个月前就不能这样写了
-              // includePaths: [path.join(__dirname, '../src/styles')]
-              // 应换成下面的
-              sassOptions: {
-                includePaths: [path.join(__dirname, "../src/styles")],
-              },
-            },
-          },
-        ],
-      },
+
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         use: [
@@ -115,19 +66,15 @@ module.exports = {
       template: "public/index.html",
       inject: true,
     }),
-    // postcssPresetEnv(),
+    new CleanWebpackPlugin(),
   ],
-  devServer: {
-    host: "localhost",
-    port: 3000,
-    historyApiFallback: true,
-    overlay: {
-      //当出现编译器错误或警告时，就在网页上显示一层黑色的背景层和错误信息
-      errors: true,
-    },
-    inline: true,
-    hot: true,
-  },
- 
-
+  performance: { // 性能提示，可以提示过大文件
+    hints: "warning", // 性能提示开关 false | "error" | "warning"
+    maxAssetSize: 100000, // 生成的文件最大限制 整数类型（以字节为单位）
+    maxEntrypointSize: 100000, // 引入的文件最大限制 整数类型（以字节为单位）
+    assetFilter: function (assetFilename) {
+      // 提供资源文件名的断言函数
+      return (/\.(png|jpe?g|gif|svg)(\?.*)?$/.test(assetFilename))
+    }
+  }
 }
