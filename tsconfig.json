@@ -34,9 +34,12 @@
   ],
   "paths": {
     "@/*": ["src/*"],
-    "@ant-design/icons/lib/dist$": ["src/icons.js"],
     "@components/*": ["src/components/*"],
-    "@img/*": ["src/assets/img/*"]
+    "@images/*": ["src/assets/images/*"],
+    "@utils/*": ["src/assets/utils/*"],
+    "@styles/*": ["src/assets/styles/*"],
+    "@views/*": ["src/assets/views/*"],
+    "@services/*": ["src/assets/services/*"]
   }
   
 }
