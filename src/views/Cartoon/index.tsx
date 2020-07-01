@@ -3,7 +3,7 @@
  * @Description: 漫画首页
  * @Date: 2020-07-01 16:34:39
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-01 16:55:03
+ * @Last Modified time: 2020-07-01 18:16:46
  */
 
 import React from 'react';
@@ -28,7 +28,7 @@ class Cartoon extends React.Component<{}, {homeInfo: ICartoonHomeRes}> {
   private async getInfo() {
     const {data} = await cartoonHomeInfo();
 
-    console.log(a);
+    console.log(data);
   }
   render() {
     return <div className="Cartoon_Page_Wrapper">漫画</div>;
