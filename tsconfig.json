@@ -38,5 +38,4 @@
     "@components/*": ["src/components/*"],
     "@img/*": ["src/assets/img/*"]
   }
-  
 }
