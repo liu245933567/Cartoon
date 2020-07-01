@@ -54,6 +54,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.vue', '.less', '.scss'],
     alias: {
       '@': resolve(__dirname, '../src'),
+      '@utils': resolve(__dirname, '../src/utils'),
       '@components': resolve(__dirname, '../src/components'),
       '@images': resolve(__dirname, '../src/assets/images'),
       '@icons': resolve(__dirname, '../src/assets/icons'),

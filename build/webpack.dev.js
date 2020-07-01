@@ -59,7 +59,7 @@ const devConfig = {
       },
       {
         test: /\.css$/, // 正则匹配文件路径
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
         use: [
           // 注意loader生效是从下往上的
           'style-loader',
@@ -69,7 +69,7 @@ const devConfig = {
       {
         // for ant design
         test: /\.less$/,
-        include: path.resolve('../node_modules'),
+        include: path.resolve(__dirname, '../node_modules'),
         use: [
           'style-loader',
           'css-loader',

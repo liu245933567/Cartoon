@@ -100,7 +100,7 @@ const prodConfig = {
     rules: [
       {
         test: /\.css$/, // 正则匹配文件路径
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -114,7 +114,7 @@ const prodConfig = {
       {
         // for ant design
         test: /\.less$/,
-        include: path.resolve('../node_modules'),
+        include: path.resolve(__dirname, '../node_modules'),
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
