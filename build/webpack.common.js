@@ -62,7 +62,7 @@ module.exports = {
       '@views': resolve(__dirname, '../src/views'),
       '@icons': resolve(__dirname, '../src/assets/icons'),
       '@styles': resolve(__dirname, '../src/styles'),
-      '@typings': resolve(__dirname, '../typings')
+      '@typings': resolve(__dirname, '../src/typings')
     }
   },
   plugins: [

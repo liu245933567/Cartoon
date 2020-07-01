@@ -34,7 +34,7 @@
       "@images/*": ["src/assets/images/*"],
       "@icons/*": ["src/assets/icons/*"],
       "@styles/*": ["src/styles/*"],
-      "@typings/*": ["typings/*"]
+      "@typings/*": ["src/typings/*"]
     }
   },
   "include": ["src"],

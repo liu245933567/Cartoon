@@ -23,7 +23,7 @@ axios.interceptors.response.use(
   response => response,
   err => Promise.resolve({
     data: {
-      err,
+      // err,
       isOk: false,
       code: err.response && err.response.status || 'ERROR',
       message: err.message || '请求出错了'
