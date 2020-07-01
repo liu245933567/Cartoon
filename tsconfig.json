@@ -26,8 +26,10 @@
     "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */,
     "paths": {
       "@/*": ["src/*"],
+      "@config/*": ["src/config/*"],
       "@utils/*": ["src/utils/*"],
       "@components/*": ["src/components/*"],
+      "@services/*": ["src/services/*"],
       "@views/*": ["src/views/*"],
       "@images/*": ["src/assets/images/*"],
       "@icons/*": ["src/assets/icons/*"],

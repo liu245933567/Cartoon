@@ -54,8 +54,10 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.vue', '.less', '.scss'],
     alias: {
       '@': resolve(__dirname, '../src'),
+      '@config': resolve(__dirname, '../src/config'),
       '@utils': resolve(__dirname, '../src/utils'),
       '@components': resolve(__dirname, '../src/components'),
+      '@services': resolve(__dirname, '../src/services'),
       '@images': resolve(__dirname, '../src/assets/images'),
       '@views': resolve(__dirname, '../src/views'),
       '@icons': resolve(__dirname, '../src/assets/icons'),
