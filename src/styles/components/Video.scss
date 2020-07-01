@@ -1,0 +1,12 @@
+.Video_Component_Wrapper{
+    .vjs_video_3-dimensions{
+      width: 100%;
+      height: $playerHeight;
+    }
+    .video-js .vjs-big-play-button{
+      top: initial;
+      left: initial;
+      bottom: $normalInterval;
+      right: $normalInterval;
+    }
+}

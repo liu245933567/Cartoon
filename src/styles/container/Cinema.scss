@@ -1,0 +1,13 @@
+.Cinema_Page_Wrapper {
+  height: 100%;
+  .video_info_wrapper {
+    background-color: $themeBackgroundColor;
+  }
+  .liubai {
+    width: 100%;
+    height: $playerHeight;
+  }
+  .Scroll_Component_wrapper{
+    height: 100%;
+  }
+}

@@ -3,16 +3,19 @@
  * @Description: 公共页面模板组件
  * @Date: 2020-06-26 11:45:27
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-06-30 18:07:10
+ * @Last Modified time: 2020-07-01 11:13:07
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { NavBar, Icon } from 'antd-mobile';
+import { INormalPageProps } from '@typings/normalPage';
 
-class NormalPage extends React.Component {
-  constructor(props:any) {
+class NormalPage extends React.Component<INormalPageProps> {
+  constructor(props: any) {
     super(props);
+  }
+  static defaultProps = {
+    showHeader: true
   }
 
   render() {
@@ -44,21 +47,5 @@ class NormalPage extends React.Component {
     );
   }
 }
-
-NormalPage.propTypes = {
-  /** 是否显示头部 */
-  showHeader: PropTypes.bool,
-  /** 自定义头部组件 */
-  customHeader: PropTypes.elementType,
-  /** 是否显示底部组件 */
-  showFooter: PropTypes.bool,
-  /** 自定义底部组件 */
-  customFooter: PropTypes.object,
-  /** 子元素 */
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
-};
-NormalPage.defaultProps = {
-  showHeader: true
-};
 
 export default NormalPage;
