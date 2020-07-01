@@ -1,0 +1,33 @@
+{
+  "JSX": {
+    "prefix": "jsx", // 触发的关键字 输入jsx按下tab键
+    "body": [
+      "import React from 'react'",
+      "", // 空的一行
+      "class Demo extends React.Component {",
+      "\trender() {", // 有制表符的一行
+      "\t\treturn (",
+      "\t\t\t$1", // 光标首次出现的位置
+      "\t\t)",
+      "\t}",
+      "}",
+      "",
+      "export default Demo"
+    ],
+    "description": "jsx components"
+  },
+  "JSXNO": {
+    "prefix": "jsxNo",
+    "body": [
+      "import React from 'react';",
+      "// import PropTypes from 'prop-types';",
+      "",
+      "const Name = () => {return (<div className=''></div>)}",
+      "",
+      "Name.propTypes = {}",
+      "Name.defaultProps = {}",
+      "",
+      "export default Name;"
+    ]
+  }
+}

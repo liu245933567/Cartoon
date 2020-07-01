@@ -57,6 +57,7 @@ module.exports = {
       '@utils': resolve(__dirname, '../src/utils'),
       '@components': resolve(__dirname, '../src/components'),
       '@images': resolve(__dirname, '../src/assets/images'),
+      '@views': resolve(__dirname, '../src/views'),
       '@icons': resolve(__dirname, '../src/assets/icons'),
       '@styles': resolve(__dirname, '../src/styles'),
       '@typings': resolve(__dirname, '../typings')
