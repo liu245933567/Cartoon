@@ -55,9 +55,9 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.vue', '.less'],
     alias: {
       '@': resolve('../src'),
-      '@ant-design/icons/lib/dist$': resolve('../src/icons.ts'),
       '@components': resolve('../src/components'),
-      '@img': resolve('../src/assets/img')
+      '@images': resolve('../src/assets/images'),
+      '@styles': resolve('../src/assets/styles')
     }
   },
   plugins: [
