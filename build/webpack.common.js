@@ -1,6 +1,5 @@
 const path = require('path');
 const { resolve } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -43,7 +42,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 10* 1024,
+              limit: 10 * 1024,
               name: path.join('font/[name].[hash:7].[ext]')
             }
           }
@@ -52,20 +51,16 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.vue', '.less'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.vue', '.less', '.scss'],
     alias: {
-      '@': resolve('../src'),
-      '@components': resolve('../src/components'),
-      '@images': resolve('../src/assets/images'),
-      '@styles': resolve('../src/assets/styles')
+      '@': resolve(__dirname, '../src'),
+      '@components': resolve(__dirname, '../src/components'),
+      '@images': resolve(__dirname, '../src/assets/images'),
+      '@styles': resolve(__dirname, '../src/styles'),
+      '@types': resolve(__dirname, '../typings')
     }
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'public/index.html',
-      inject: true
-    }),
     new CleanWebpackPlugin()
   ],
   performance: { // 性能提示，可以提示过大文件
