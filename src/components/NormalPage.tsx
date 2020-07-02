@@ -3,23 +3,32 @@
  * @Description: 公共页面模板组件
  * @Date: 2020-06-26 11:45:27
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-01 11:13:07
+ * @Last Modified time: 2020-07-02 23:35:11
  */
 
 import React from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import { INormalPageProps } from '@typings/normalPage';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-class NormalPage extends React.Component<INormalPageProps> {
+type IProps = RouteComponentProps & INormalPageProps;
+class NormalPage extends React.Component<IProps> {
   constructor(props: any) {
     super(props);
   }
   static defaultProps = {
-    showHeader: true
-  }
+    showHeader: true,
+    headerText: '烟雨阁'
+  };
 
   render() {
-    const { showHeader, showFooter, customFooter, children } = this.props;
+    const {
+      showHeader,
+      headerText,
+      showFooter,
+      customFooter,
+      children
+    } = this.props;
 
     return (
       <div className="NormalPage_Component_Wrapper">
@@ -29,13 +38,15 @@ class NormalPage extends React.Component<INormalPageProps> {
             <NavBar
               mode="light"
               icon={<Icon type="left" />}
-              onLeftClick={() => console.log('onLeftClick')}
+              onLeftClick={() => {
+                this.props.history.go(-1);
+              }}
               rightContent={[
                 <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
                 <Icon key="1" type="ellipsis" />
               ]}
             >
-              烟雨阁
+              {headerText}
             </NavBar>
           </header>
         }
@@ -48,4 +59,4 @@ class NormalPage extends React.Component<INormalPageProps> {
   }
 }
 
-export default NormalPage;
+export default withRouter(NormalPage);

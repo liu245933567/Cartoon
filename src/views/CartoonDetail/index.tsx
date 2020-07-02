@@ -1,5 +1,4 @@
 import React from 'react';
-import NormalPage from '@components/NormalPage';
 import { autobind } from 'core-decorators';
 import { RouteComponentProps } from 'react-router-dom';
 import { cartoonDeatilInfo } from '@services/cartoon';
@@ -10,6 +9,7 @@ import {
 import CartoonInfo from '@components/CartoonInfo';
 import SectionList from '@components/SectionList';
 import Scroll from '@components/Scroll';
+import NormalPage from '@components/NormalPage';
 
 type IProps = RouteComponentProps<{ detailPath: string }>;
 type TState = {
@@ -48,6 +48,9 @@ class CartoonDetail extends React.Component<IProps, TState> {
   @autobind
   private toCheckSection(sectionInfo: SectionBaseInfo) {
     console.log(sectionInfo);
+    this.props.history.push({
+      pathname: `/sectionDetail/${encodeURIComponent(sectionInfo.sectionHref)}`
+    });
   }
 
   render() {

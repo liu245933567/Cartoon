@@ -3,7 +3,7 @@
  * @Description: NormalPage 组件类型声明
  * @Date: 2020-07-01 10:53:59
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-01 14:34:33
+ * @Last Modified time: 2020-07-02 23:34:10
  */
 
 export interface INormalPageProps {
@@ -11,6 +11,8 @@ export interface INormalPageProps {
   showHeader?: boolean;
   /** 自定义头部组件 */
   customHeader?: React.ReactNode;
+  /** 标题名称 */
+  headerText?: string;
   /** 是否显示底部组件 */
   showFooter?: boolean;
   /** 自定义底部组件 */

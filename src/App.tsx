@@ -9,7 +9,12 @@ const NavigationComponent = loadable(() =>
 
 /** 动漫详情页 */
 const CartoonDeatil = loadable(() =>
-import(/* webpackChunkName: "cartonDeatil" */ './views/CartoonDetail')
+  import(/* webpackChunkName: "cartonDeatil" */ './views/CartoonDetail')
+);
+
+/** 章节详情页 */
+const SectionDeatil = loadable(() =>
+  import(/* webpackChunkName: "cartonDeatil" */ './views/SectionDetail')
 );
 
 class App extends React.Component {
@@ -17,7 +22,15 @@ class App extends React.Component {
     return (
       <Router>
         <Route exact path="/" component={NavigationComponent}></Route>
-        <Route exact path="/cartoonDeatil/:detailPath" component={CartoonDeatil}></Route>
+        <Route
+          exact
+          path="/cartoonDeatil/:detailPath"
+          component={CartoonDeatil}
+        ></Route>
+        <Route
+          path="/sectionDetail/:detailPath"
+          component={SectionDeatil}
+        ></Route>
       </Router>
     );
   }

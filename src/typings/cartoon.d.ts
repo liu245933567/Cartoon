@@ -100,3 +100,9 @@ export interface ICartoonDeatilInfoReq {
   /** 详情路径 */
   cartoonPath: string;
 }
+
+/** 章节详情请求参数 */
+export interface ISectionDeatilInfoReq {
+  /** 章节详情路径 */
+  sectionPath: string;
+}

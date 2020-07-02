@@ -53,11 +53,19 @@ class Scroll extends React.Component<IScrollProps, IScrollState> {
   }
   static defaultProps = defProps;
 
-  componentDidMount() {
+  public componentDidMount() {
     // 保证在DOM渲染完毕后初始化better-scroll
     setTimeout(() => {
       this.initScroll();
     }, 20);
+  }
+
+  public componentDidUpdate(prvProps: any) {
+    if (JSON.stringify(prvProps.data) !== JSON.stringify(this.props.data)) {
+      if (this.scroll) {
+        this.scroll.refresh();
+      }
+    }
   }
 
   /** 初始化 scroll 方法 */
