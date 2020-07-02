@@ -13,9 +13,11 @@ import Home from '@views/Home';
 import Movie from '@views/Movie';
 import Cartoon from '@views/Cartoon';
 import User from '@views/User';
+import { RouteComponentProps } from 'react-router-dom';
 
-class Navigation extends React.Component<{}, {curNavTab: string}> {
-  constructor(props:any) {
+type IProps = RouteComponentProps & {};
+class Navigation extends React.Component<IProps, { curNavTab: string }> {
+  constructor(props: any) {
     super(props);
     this.state = {
       curNavTab: 'cartoon'
@@ -24,7 +26,7 @@ class Navigation extends React.Component<{}, {curNavTab: string}> {
   }
 
   /** 切换tab */
-  public chooseTab(tabId:string) {
+  public chooseTab(tabId: string) {
     this.setState({
       curNavTab: tabId
     });
@@ -34,7 +36,7 @@ class Navigation extends React.Component<{}, {curNavTab: string}> {
     const Content = () => {
       switch (curNavTab) {
         case 'home':
-          return <Home/>;
+          return <Home />;
         case 'movie':
           return <Movie />;
         case 'cartoon':
@@ -48,11 +50,11 @@ class Navigation extends React.Component<{}, {curNavTab: string}> {
 
     return (
       <NormalPage
-      customFooter={
-        <NavTab curNavTab={curNavTab} pressCallBack={this.chooseTab} />
-      }
-      showFooter
-      showHeader={false}
+        customFooter={
+          <NavTab curNavTab={curNavTab} pressCallBack={this.chooseTab} />
+        }
+        showFooter
+        showHeader={false}
       >
         <Content />
       </NormalPage>

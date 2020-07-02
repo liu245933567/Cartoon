@@ -95,3 +95,8 @@ export interface ICartoonHomeRes {
   /** 其他推荐列表 */
   otherRecommendList: OtherRecommend[] | never[];
 }
+/** 动漫详情请求参数 */
+export interface ICartoonDeatilInfoReq {
+  /** 详情路径 */
+  cartoonPath: string;
+}

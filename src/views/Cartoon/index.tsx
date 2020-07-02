@@ -10,8 +10,10 @@ import React from 'react';
 import { cartoonHomeInfo } from '@services/cartoon';
 import { ICartoonHomeRes, CartoonOtherRecommendInfo } from '@typings/cartoon';
 import CartoonNormalList from '@components/CartoonNormalList';
-
-class Cartoon extends React.Component<{}, { homeInfo: ICartoonHomeRes }> {
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { autobind } from 'core-decorators';
+type IProps = RouteComponentProps & {};
+class Cartoon extends React.Component<IProps, { homeInfo: ICartoonHomeRes }> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -38,18 +40,25 @@ class Cartoon extends React.Component<{}, { homeInfo: ICartoonHomeRes }> {
     }
   }
   /** 查看动漫详情 */
+  @autobind
   public toCheckDetail(cartoonInfo: CartoonOtherRecommendInfo) {
     console.log(cartoonInfo);
+    this.props.history.push({
+      pathname: `/cartoonDeatil/${encodeURIComponent(cartoonInfo.detailHref)}`
+    });
   }
   render() {
     const { hotCartoonRecommends } = this.state.homeInfo;
 
     return (
       <div className="Cartoon_Page_Wrapper">
-        <CartoonNormalList cartoonList={hotCartoonRecommends} clickHandle={this.toCheckDetail}/>
+        <CartoonNormalList
+          cartoonList={hotCartoonRecommends}
+          clickHandle={this.toCheckDetail}
+        />
       </div>
     );
   }
 }
 
-export default Cartoon;
+export default withRouter(Cartoon);

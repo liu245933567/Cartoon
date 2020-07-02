@@ -1,5 +1,7 @@
 .NormalPage_Component_Wrapper {
   position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   width: 10rem;
   height: 100%;
