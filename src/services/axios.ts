@@ -1,5 +1,6 @@
 import axios, {AxiosRequestConfig} from 'axios';
 import { HOST, WITHCREDENTIALS } from '@config/index';
+import {ResponseData} from '@typings/api';
 
 
 axios.defaults.baseURL = HOST;
@@ -26,7 +27,8 @@ axios.interceptors.response.use(
       // err,
       isOk: false,
       code: err.response && err.response.status || 'ERROR',
-      message: err.message || '请求出错了'
+      message: err.message || '请求出错了',
+      result: null
     }
   })
 );
@@ -37,8 +39,8 @@ function get(url:string) {
 }
 
 // post请求
-function post(url:string, data?: any) {
-  return axios.post(url, data);
+function post<ReqT, ResT>(url:string, data?: ReqT) {
+  return axios.post<ResponseData<ResT>>(url, data);
 }
 
 export {

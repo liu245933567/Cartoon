@@ -1,0 +1,19 @@
+.CartoonNormalList-Component-Wrapper {
+  .List-type {
+    height: .933333rem /* 70/75 */;
+    line-height: .933333rem /* 70/75 */;
+    background-image: url('~@icons/hot-icon.png');
+    background-size: .666667rem /* 50/75 */;
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 1rem;
+    margin: 0 $normalInterval;
+  }
+  .List-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    box-sizing: border-box;
+    padding: 0 $smallInterval;
+  }
+}

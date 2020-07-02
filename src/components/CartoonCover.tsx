@@ -7,16 +7,31 @@
  */
 
 import React from 'react';
+import { CartoonOtherRecommendInfo } from '@typings/cartoon';
 
+interface IProps {
+  /** 动漫信息 */
+  cartoonInfo: CartoonOtherRecommendInfo;
+  /** 点击回调 */
+  clickHandle: (cartoonInfo: CartoonOtherRecommendInfo) => void;
+}
 
-const CartoonCover = () => {
+const CartoonCover: React.FC<IProps> = ({
+  cartoonInfo,
+  clickHandle
+}: IProps) => {
   return (
-    <div className="CartoonCover-Component-Wrapper">
+    <div
+      className="CartoonCover-Component-Wrapper"
+      onClick={() => {
+        clickHandle(cartoonInfo);
+      }}
+    >
       <div className="Cover-wrapper">
-        <img src="http://i.youzipi.net/mh/cover/2019/12/28/22371c16ed.jpg/420"/>
-        <div className="Cover-last-section">235话：星辰变</div>
+        <img className="Cover-Image" src={cartoonInfo.coverPictureSrc} />
+        <div className="Cover-last-section">{cartoonInfo.latestChapter}</div>
       </div>
-      <div className="sss"></div>
+      <div className="cartoon-name">{cartoonInfo.cartoonName}</div>
     </div>
   );
 };

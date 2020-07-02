@@ -8,9 +8,11 @@
 
 import React from 'react';
 import { cartoonHomeInfo } from '@services/cartoon';
-import {ICartoonHomeRes} from '@typings/cartoon';
-class Cartoon extends React.Component<{}, {homeInfo: ICartoonHomeRes}> {
-  constructor(props:any) {
+import { ICartoonHomeRes, CartoonOtherRecommendInfo } from '@typings/cartoon';
+import CartoonNormalList from '@components/CartoonNormalList';
+
+class Cartoon extends React.Component<{}, { homeInfo: ICartoonHomeRes }> {
+  constructor(props: any) {
     super(props);
     this.state = {
       homeInfo: {
@@ -26,12 +28,27 @@ class Cartoon extends React.Component<{}, {homeInfo: ICartoonHomeRes}> {
 
   /** 获取首页信息接口 */
   private async getInfo() {
-    const {data} = await cartoonHomeInfo();
+    const { data } = await cartoonHomeInfo();
 
-    console.log(data);
+    console.log(data.result);
+    if (data.isOk) {
+      this.setState({
+        homeInfo: data.result
+      });
+    }
+  }
+  /** 查看动漫详情 */
+  public toCheckDetail(cartoonInfo: CartoonOtherRecommendInfo) {
+    console.log(cartoonInfo);
   }
   render() {
-    return <div className="Cartoon_Page_Wrapper">漫画</div>;
+    const { hotCartoonRecommends } = this.state.homeInfo;
+
+    return (
+      <div className="Cartoon_Page_Wrapper">
+        <CartoonNormalList cartoonList={hotCartoonRecommends} clickHandle={this.toCheckDetail}/>
+      </div>
+    );
   }
 }
 

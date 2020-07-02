@@ -6,4 +6,15 @@ import '@styles';
 
 setRemAdapter(document, window);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function start() {
+  ReactDOM.render(<App />, document.getElementById('root'));
+}
+
+function run() {
+  start();
+  if (module.hot) {
+    module.hot.accept(start);
+  }
+}
+
+run();

@@ -1,12 +1,13 @@
-import { ICartoonHomeRes } from './cartoon';
+// import { ICartoonHomeRes } from './cartoon';
 
-declare namespace Api {
-  interface IBaseRes {
-    isOk: boolean;
-    code: string | number;
-    message: string;
-  }
-  export interface ICartoonHomeInfoAPIRes extends IBaseRes {
-    homeInfo: ICartoonHomeRes;
-  }
+// 请求接口数据
+export interface ResponseData<T = any> {
+  /** 是否成功 */
+  isOk: boolean;
+  /** 状态码 */
+  code: string | number;
+  /** 数据 */
+  result: T
+  /** 消息 */
+  message: string
 }

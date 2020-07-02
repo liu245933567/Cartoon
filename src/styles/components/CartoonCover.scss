@@ -1,0 +1,33 @@
+.CartoonCover-Component-Wrapper {
+  $imageWidth: 2.96rem /* 222/75 */;
+  $imageHeight: 3.946667rem /* 296/75 */;
+  $sectionNameHeight: 0.533333rem /* 40/75 */;
+  width: $imageWidth;
+  .Cover-wrapper {
+    width: 100%;
+    height: $imageHeight;
+    overflow: hidden;
+    position: relative;
+    .Cover-Image {
+      width: 100%;
+    }
+    .Cover-last-section {
+      position: absolute;
+      height: $sectionNameHeight;
+      line-height: $sectionNameHeight;
+      text-align: right;
+      color: #fff;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.85), transparent);
+      padding-right: $smallInterval;
+      box-sizing: border-box;
+    }
+  }
+  .cartoon-name {
+    height: 0.8rem /* 60/75 */;
+    text-align: center;
+    line-height: 0.4rem /* 30/75 */;
+    margin-top: $smallInterval;
+  }
+}
