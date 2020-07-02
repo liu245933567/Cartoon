@@ -1,6 +1,6 @@
 import React from 'react';
 import BScroll from 'better-scroll';
-import { IScrollProps, IScrollState } from '../../typings/scroll';
+import { IScrollProps, IScrollState } from '@typings/scroll';
 
 const defProps = {
   probeType: 1,
@@ -73,6 +73,7 @@ class Scroll extends React.Component<IScrollProps, IScrollState> {
       scrollbar
     } = this.props;
 
+    console.log('scrollX', scrollX);
     this.scroll = new BScroll(this.wrapper.current as HTMLDivElement, {
       probeType,
       click,

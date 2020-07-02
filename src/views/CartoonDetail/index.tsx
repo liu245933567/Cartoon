@@ -3,7 +3,13 @@ import NormalPage from '@components/NormalPage';
 import { autobind } from 'core-decorators';
 import { RouteComponentProps } from 'react-router-dom';
 import { cartoonDeatilInfo } from '@services/cartoon';
-import { CartoonDetail as ICartoonDetail } from '@typings/cartoon';
+import {
+  CartoonDetail as ICartoonDetail,
+  SectionBaseInfo
+} from '@typings/cartoon';
+import CartoonInfo from '@components/CartoonInfo';
+import SectionList from '@components/SectionList';
+import Scroll from '@components/Scroll';
 
 type IProps = RouteComponentProps<{ detailPath: string }>;
 type TState = {
@@ -21,11 +27,14 @@ class CartoonDetail extends React.Component<IProps, TState> {
   public componentDidMount() {
     this.getDeatilInfo();
   }
+
   /** 获取动漫详情信息 */
   @autobind
   private async getDeatilInfo() {
     const cartoonPath = this.props.match.params.detailPath;
-    const { data } = await cartoonDeatilInfo({ cartoonPath: decodeURIComponent(cartoonPath) });
+    const { data } = await cartoonDeatilInfo({
+      cartoonPath: decodeURIComponent(cartoonPath)
+    });
 
     if (data.isOk) {
       console.log(data.result);
@@ -34,12 +43,26 @@ class CartoonDetail extends React.Component<IProps, TState> {
       });
     }
   }
+
+  /** 查看章节详情页 */
+  @autobind
+  private toCheckSection(sectionInfo: SectionBaseInfo) {
+    console.log(sectionInfo);
+  }
+
   render() {
+    const { cartoonInfo } = this.state;
+
     return (
       <NormalPage>
         <div className="CartoonDetail-Page-Wrapper">
-          <div className="Cartoon-Info-Wrapper">动漫信息</div>
-          <div className="Cartoon-Section-List-Wrapper">章节列表</div>
+          <CartoonInfo cartoonInfo={cartoonInfo as ICartoonDetail} />
+          <Scroll>
+            <SectionList
+              sectionList={cartoonInfo?.sectionList}
+              clickHandle={this.toCheckSection}
+            />
+          </Scroll>
         </div>
       </NormalPage>
     );

@@ -1,0 +1,8 @@
+.CartoonDetail-Page-Wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .Scroll_Component_wrapper {
+    flex: 1;
+  }
+}

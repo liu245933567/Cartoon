@@ -1,0 +1,30 @@
+.CartoonInfo-Component-Wrapper{
+  $imageWidth: 3rem;
+  $imageHeight: 4rem;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 $normalInterval;
+  .Cartoon-Image-Cover{
+    width: $imageWidth;
+    height: $imageHeight;
+    .Cartoon-Image{
+      width: 100%;
+    }
+  }
+  .cartoon-info{
+    flex: 1;
+    margin-left: $normalInterval;
+    .cartoon-name{}
+    .cartoon-description{
+      height: 0.8rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-height: 0.4rem;
+      font-size: 0.32rem;
+      margin-top: $smallInterval;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.SectionList-Component-Wrapper {
+  .section-list {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: end;
+    .section-item {
+      width: 2.8rem;
+      height: .666667rem /* 50/75 */;
+      margin: 0.1rem 0.24rem;
+      text-align: center;
+      font-size: .32rem /* 24/75 */;
+      line-height: .666667rem /* 50/75 */;
+      border: 1px solid #999;
+      border-radius: .133333rem /* 10/75 */;
+    }
+  }
+}
