@@ -3,7 +3,7 @@
  * @Description: 轮播图组件
  * @Date: 2020-07-03 02:31:12
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-03 14:54:16
+ * @Last Modified time: 2020-07-03 15:37:12
  */
 
 import React from 'react';
@@ -121,6 +121,7 @@ class Slider extends React.Component<IProps, IState> {
       scrollX: true,
       scrollY: false,
       momentum: false,
+      click: true,
       snap: {
         loop: true,
         threshold: 0.3,

@@ -3,7 +3,7 @@
  * @Description: 底部导航栏
  * @Date: 2020-06-26 14:43:33
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-01 15:46:14
+ * @Last Modified time: 2020-07-03 15:41:29
  */
 
 import React from 'react';
@@ -11,8 +11,8 @@ import { INavTabProps } from '@typings/navtab';
 import { TabBar } from 'antd-mobile';
 
 const TabBarData = [
-  { title: '首页', key: 'home' },
-  { title: '视频', key: 'movie' },
+  // { title: '首页', key: 'home' },
+  // { title: '视频', key: 'movie' },
   { title: '动漫', key: 'cartoon' },
   { title: '我', key: 'user' }
 ];

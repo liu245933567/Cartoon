@@ -10,7 +10,7 @@
 @import "./components/SectionList.scss";
 @import "./components/SectionDetail.scss";
 @import './components/Slider.scss';
-// @import './components/Video.scss';
+@import './components/UserInfo.scss';
 @import "./components/Scroll.scss";
 @import "./components/NavTab.scss";
 // @import './components/NavScroll.scss';
@@ -19,6 +19,7 @@
 // 容器样式
 @import "./container/CartoonDetail.scss";
 @import "./container/Cartoon.scss";
+@import "./container/User.scss";
 // @import './container/Home.scss';
 // @import './container/Cinema.scss';
 // @import './container/Movie.scss';

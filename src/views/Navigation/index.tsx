@@ -3,7 +3,7 @@
  * @Description: 首页导航页
  * @Date: 2020-07-01 14:27:14
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-01 16:15:23
+ * @Last Modified time: 2020-07-03 15:41:17
  */
 
 import * as React from 'react';
@@ -20,7 +20,7 @@ class Navigation extends React.Component<IProps, { curNavTab: string }> {
   constructor(props: any) {
     super(props);
     this.state = {
-      curNavTab: 'cartoon'
+      curNavTab: 'user'
     };
     this.chooseTab = this.chooseTab.bind(this);
   }

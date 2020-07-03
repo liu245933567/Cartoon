@@ -1,0 +1,72 @@
+.UserInfo-Component-Wrapper {
+  padding: 0.266667rem /* 20/75 */;
+  .brief-info-wrapper {
+    display: flex;
+    .info-area {
+      flex: 1;
+      .user-name {
+        font-size: 0.48rem /* 36/75 */;
+        color: #292929;
+      }
+      .user-personalized-signature {
+        font-size: 0.266667rem /* 20/75 */;
+        color: #999999;
+        margin-top: $smallInterval;
+      }
+      .use-info-btn {
+        display: flex;
+        margin-top: $smallInterval;
+        & > div {
+          margin-right: $normalInterval;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+        .user-btn-item {
+          height: 0.506667rem /* 38/75 */;
+          line-height: 0.506667rem /* 38/75 */;
+          border-radius: 0.253333rem /* 19/75 */;
+          padding-left: 0.52rem /* 39/75 */;
+          padding-right: 0.253333rem /* 19/75 */;
+          background-repeat: no-repeat;
+          background-size: 0.213333rem /* 16/75 */;
+          background-position: 0.253333rem /* 19/75 */ center;
+          background-image: url("~@icons/tip-icon.png");
+          color: #8a8a8a;
+          background-color: #f2f5f5;
+          font-size: 0.213333rem /* 16/75 */;
+        }
+      }
+    }
+    .user-picture {
+      width: 1.6rem /* 120/75 */;
+      height: 1.6rem /* 120/75 */;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .user-tab-info-wrapper {
+    display: flex;
+    .user-tab-item {
+      width: 1.733333rem /* 130/75 */;
+      height: 0.986667rem /* 74/75 */;
+      border-radius: 0.106667rem /* 8/75 */;
+      margin-top: $normalInterval;
+      box-shadow: 0px 0px 8px 0px #efebeb;
+      .user-tab-text {
+        font-size: .24rem /* 18/75 */;
+        height: .493333rem /* 37/75 */;
+        line-height: .493333rem /* 37/75 */;
+        text-align: center;
+      }
+      .user-tab-name {
+        font-size: .213333rem /* 16/75 */;
+        height: .493333rem /* 37/75 */;
+        line-height: .493333rem /* 37/75 */;
+        text-align: center;
+      }
+    }
+  }
+}
