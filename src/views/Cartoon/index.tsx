@@ -7,7 +7,6 @@
  */
 
 import React from 'react';
-import { cartoonHomeInfo } from '@services/cartoon';
 import { ICartoonHomeRes, CartoonOtherRecommendInfo } from '@typings/cartoon';
 // import CartoonNormalList from '@components/CartoonNormalList';
 // import Scroll from '@components/Scroll';
@@ -16,8 +15,13 @@ import CartoonCover from '@components/CartoonCover';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { autobind } from 'core-decorators';
 import { chunk } from 'lodash-es';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ICartoonReduceState } from '@redux/reducers/cartoon';
+import { requestCartoonHomeInfo } from '@redux/actions/cartoon';
+import { AppState } from '@redux/reducers';
 
-type IProps = RouteComponentProps & {};
+type IProps = RouteComponentProps & ICartoonReduceState & {requestCartoonHomeInfo: typeof requestCartoonHomeInfo};
 class Cartoon extends React.Component<IProps, { homeInfo: ICartoonHomeRes }> {
   constructor(props: any) {
     super(props);
@@ -31,19 +35,7 @@ class Cartoon extends React.Component<IProps, { homeInfo: ICartoonHomeRes }> {
   }
 
   public componentDidMount() {
-    this.getInfo();
-  }
-
-  /** 获取首页信息接口 */
-  private async getInfo() {
-    const { data } = await cartoonHomeInfo();
-
-    console.log(data.result);
-    if (data.isOk) {
-      this.setState({
-        homeInfo: data.result
-      });
-    }
+    this.props.requestCartoonHomeInfo();
   }
 
   /** 查看动漫详情 */
@@ -56,7 +48,8 @@ class Cartoon extends React.Component<IProps, { homeInfo: ICartoonHomeRes }> {
   }
 
   render() {
-    const { hotCartoonRecommends } = this.state.homeInfo;
+    const { hotCartoonRecommends } = this.props;
+
     /** 分割后的热门推荐列表 */
     const hotArr = chunk(hotCartoonRecommends, 3);
 
@@ -90,4 +83,7 @@ class Cartoon extends React.Component<IProps, { homeInfo: ICartoonHomeRes }> {
   }
 }
 
-export default withRouter(Cartoon);
+export default connect(
+  (state: AppState) => state.cartoon,
+  (dispatch) => bindActionCreators({ requestCartoonHomeInfo }, dispatch)
+)(withRouter(Cartoon));

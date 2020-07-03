@@ -3,15 +3,20 @@
  * @Description: 公共页面模板组件
  * @Date: 2020-06-26 11:45:27
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-02 23:35:11
+ * @Last Modified time: 2020-07-03 23:32:26
  */
 
 import React from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import { INormalPageProps } from '@typings/normalPage';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import Loading from '@components/Loading';
+import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
+import { IGlobalReduceState } from '@redux/reducers/global';
+import { AppState } from '@redux/reducers';
 
-type IProps = RouteComponentProps & INormalPageProps;
+type IProps = RouteComponentProps & INormalPageProps & IGlobalReduceState;
 class NormalPage extends React.Component<IProps> {
   constructor(props: any) {
     super(props);
@@ -50,6 +55,7 @@ class NormalPage extends React.Component<IProps> {
             </NavBar>
           </header>
         }
+        <Loading isLoading={this.props.isLoading} />
         <main className="NormalPage_Content_wrapper">{children}</main>
         {showFooter && customFooter &&
           <footer className="NormalPage_Footer_wrapper">{customFooter}</footer>
@@ -59,4 +65,6 @@ class NormalPage extends React.Component<IProps> {
   }
 }
 
-export default withRouter(NormalPage);
+export default connect((state: AppState) => state.global)(
+  withRouter(NormalPage)
+);

@@ -2,11 +2,7 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
-import createStoreWithMdware from '@redux/store';
-import reducers from '@redux/reducers';
-
-//创建store
-const store = createStoreWithMdware(reducers);
+import store from '@redux/store';
 
 /** 导航页 */
 const NavigationComponent = loadable(() =>

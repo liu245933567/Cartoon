@@ -1,50 +1,58 @@
-import axios, {AxiosRequestConfig} from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { HOST, WITHCREDENTIALS } from '@config/index';
-import {ResponseData} from '@typings/api';
-
+import { ResponseData } from '@typings/api';
+import store from '@redux/store';
+import { changeLoading } from '@redux/actions/global';
 
 axios.defaults.baseURL = HOST;
 axios.defaults.withCredentials = WITHCREDENTIALS;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 axios.defaults.timeout = 180000;
 
-
 /**
  * request之前的处理
  */
 axios.interceptors.request.use(
-  config => config,
-  err => Promise.reject(err)
+  (config) => {
+    store.dispatch(changeLoading({ isLoading: true }));
+    return config;
+  },
+  (err) => {
+    store.dispatch(changeLoading({ isLoading: false }));
+    return Promise.reject(err);
+  }
 );
 
 /**
  * response之后的处理
  */
 axios.interceptors.response.use(
-  response => response,
-  err => Promise.resolve({
-    data: {
-      // err,
-      isOk: false,
-      code: err.response && err.response.status || 'ERROR',
-      message: err.message || '请求出错了',
-      result: null
-    }
-  })
+  (response) => {
+    store.dispatch(changeLoading({ isLoading: false }));
+    return response;
+  },
+  (err) => {
+    store.dispatch(changeLoading({ isLoading: false }));
+    return Promise.resolve({
+      data: {
+        // err,
+        isOk: false,
+        code: err.response && err.response.status || 'ERROR',
+        message: err.message || '请求出错了',
+        result: null
+      }
+    });
+  }
 );
 
 /** Axios get请求 */
-function get(url:string) {
+function get(url: string) {
   return (config?: AxiosRequestConfig) => axios.get(url, config);
 }
 
 // post请求
-function post<ReqT, ResT>(url:string, data?: ReqT) {
+function post<ReqT, ResT>(url: string, data?: ReqT) {
   return axios.post<ResponseData<ResT>>(url, data);
 }
 
-export {
-  axios,
-  get,
-  post
-};
+export { axios, get, post };

@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import reducers from '../reducers';
 
 /**
  * 通过createStoreWithMdwareAPI创建createStore
@@ -8,4 +9,6 @@ import thunkMiddleware from 'redux-thunk';
  */
 const createStoreWithMdware = applyMiddleware(thunkMiddleware)(createStore);
 
-export default createStoreWithMdware;
+const store = createStoreWithMdware(reducers);
+
+export default store;

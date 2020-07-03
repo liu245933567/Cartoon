@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import cartoon from './cartoon';
+import global from './global';
 
 const rootReducer = combineReducers({
-  cartoon
+  cartoon,
+  global
   // todos
 });
 

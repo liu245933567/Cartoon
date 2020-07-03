@@ -24,7 +24,3 @@ export const requestCartoonHomeInfo = () => async (
     });
   }
 };
-
-export default {
-  requestCartoonHomeInfo
-};
