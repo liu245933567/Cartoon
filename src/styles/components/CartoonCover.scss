@@ -3,6 +3,9 @@
   $imageHeight: 3.946667rem /* 296/75 */;
   $sectionNameHeight: 0.533333rem /* 40/75 */;
   width: $imageWidth;
+  border-radius: $normalRadius;
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
   .Cover-wrapper {
     width: 100%;
     height: $imageHeight;
@@ -28,6 +31,10 @@
     height: 0.8rem /* 60/75 */;
     text-align: center;
     line-height: 0.4rem /* 30/75 */;
-    margin-top: $smallInterval;
+    // margin-top: $smallInterval;
+    color: #949494;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

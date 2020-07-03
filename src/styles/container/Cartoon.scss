@@ -1,5 +1,13 @@
 .Cartoon-Page-Wrapper {
   height: 100%;
+  .Slider-Component-Wrapper {
+    margin-top: 10px;
+  }
+  .test {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.25rem;
+  }
   .Scroll_Component_wrapper {
     height: 100%;
   }

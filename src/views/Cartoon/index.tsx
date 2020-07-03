@@ -3,7 +3,7 @@
  * @Description: 漫画首页
  * @Date: 2020-07-01 16:34:39
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-02 22:08:56
+ * @Last Modified time: 2020-07-03 14:26:11
  */
 
 import React from 'react';
@@ -11,8 +11,11 @@ import { cartoonHomeInfo } from '@services/cartoon';
 import { ICartoonHomeRes, CartoonOtherRecommendInfo } from '@typings/cartoon';
 import CartoonNormalList from '@components/CartoonNormalList';
 import Scroll from '@components/Scroll';
+import Slider from '@components/Slider';
+import CartoonCover from '@components/CartoonCover';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { autobind } from 'core-decorators';
+import { chunk } from 'lodash-es';
 
 type IProps = RouteComponentProps & {};
 class Cartoon extends React.Component<IProps, { homeInfo: ICartoonHomeRes }> {
@@ -54,9 +57,28 @@ class Cartoon extends React.Component<IProps, { homeInfo: ICartoonHomeRes }> {
 
   render() {
     const { hotCartoonRecommends } = this.state.homeInfo;
+    /** 分割后的热门推荐列表 */
+    const hotArr = chunk(hotCartoonRecommends, 3);
 
     return (
       <div className="Cartoon-Page-Wrapper">
+        <Slider loop autoPlay interval={5000} data={hotArr}>
+          {hotArr.map((hotArrItem, hotArrItemIndex) => {
+            return (
+              <div key={Number(new Date()) + hotArrItemIndex} className="test">
+                {hotArrItem.map((cartoonInfo) => {
+                  return (
+                    <CartoonCover
+                      key={cartoonInfo.detailHref}
+                      cartoonInfo={cartoonInfo}
+                      clickHandle={this.toCheckDetail}
+                    />
+                  );
+                })}
+              </div>
+            );
+          })}
+        </Slider>
         <Scroll>
           <CartoonNormalList
             cartoonList={hotCartoonRecommends}
