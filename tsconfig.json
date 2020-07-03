@@ -28,6 +28,7 @@
       "@/*": ["src/*"],
       "@config/*": ["src/config/*"],
       "@utils/*": ["src/utils/*"],
+      "@redux/*": ["src/redux/*"],
       "@components/*": ["src/components/*"],
       "@services/*": ["src/services/*"],
       "@views/*": ["src/views/*"],

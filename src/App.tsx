@@ -1,6 +1,12 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
+import createStoreWithMdware from '@redux/store';
+import reducers from '@redux/reducers';
+
+//创建store
+const store = createStoreWithMdware(reducers);
 
 /** 导航页 */
 const NavigationComponent = loadable(() =>
@@ -20,18 +26,20 @@ const SectionDeatil = loadable(() =>
 class App extends React.Component {
   render() {
     return (
-      <Router>
-        <Route exact path="/" component={NavigationComponent}></Route>
-        <Route
-          exact
-          path="/cartoonDeatil/:detailPath"
-          component={CartoonDeatil}
-        ></Route>
-        <Route
-          path="/sectionDetail/:detailPath"
-          component={SectionDeatil}
-        ></Route>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Route exact path="/" component={NavigationComponent}></Route>
+          <Route
+            exact
+            path="/cartoonDeatil/:detailPath"
+            component={CartoonDeatil}
+          ></Route>
+          <Route
+            path="/sectionDetail/:detailPath"
+            component={SectionDeatil}
+          ></Route>
+        </Router>
+      </Provider>
     );
   }
 }

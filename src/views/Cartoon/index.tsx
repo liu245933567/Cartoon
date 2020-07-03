@@ -3,14 +3,14 @@
  * @Description: 漫画首页
  * @Date: 2020-07-01 16:34:39
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-03 14:26:11
+ * @Last Modified time: 2020-07-03 18:35:59
  */
 
 import React from 'react';
 import { cartoonHomeInfo } from '@services/cartoon';
 import { ICartoonHomeRes, CartoonOtherRecommendInfo } from '@typings/cartoon';
-import CartoonNormalList from '@components/CartoonNormalList';
-import Scroll from '@components/Scroll';
+// import CartoonNormalList from '@components/CartoonNormalList';
+// import Scroll from '@components/Scroll';
 import Slider from '@components/Slider';
 import CartoonCover from '@components/CartoonCover';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
@@ -79,12 +79,12 @@ class Cartoon extends React.Component<IProps, { homeInfo: ICartoonHomeRes }> {
             );
           })}
         </Slider>
-        <Scroll>
+        {/* <Scroll>
           <CartoonNormalList
             cartoonList={hotCartoonRecommends}
             clickHandle={this.toCheckDetail}
           />
-        </Scroll>
+        </Scroll> */}
       </div>
     );
   }

@@ -20,12 +20,13 @@
     "prefix": "jsxNo",
     "body": [
       "import React from 'react';",
-      "// import PropTypes from 'prop-types';",
       "",
-      "const Name = () => {return (<div className=''></div>)}",
+      "const Name = () => {",
+      "\treturn (",
+      "\t\t<div className=''></div>",
+      "\t)",
+      "}",
       "",
-      "Name.propTypes = {}",
-      "Name.defaultProps = {}",
       "",
       "export default Name;"
     ]

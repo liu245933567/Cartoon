@@ -56,6 +56,7 @@ module.exports = {
       '@': resolve(__dirname, '../src'),
       '@config': resolve(__dirname, '../src/config'),
       '@utils': resolve(__dirname, '../src/utils'),
+      '@redux': resolve(__dirname, '../src/redux'),
       '@components': resolve(__dirname, '../src/components'),
       '@services': resolve(__dirname, '../src/services'),
       '@images': resolve(__dirname, '../src/assets/images'),

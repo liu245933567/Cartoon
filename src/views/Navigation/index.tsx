@@ -14,13 +14,22 @@ import Movie from '@views/Movie';
 import Cartoon from '@views/Cartoon';
 import User from '@views/User';
 import { RouteComponentProps } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ICartoonReduceState } from '@redux/reducers/cartoon';
+import cartoonAction from '@redux/actions/cartoon';
+import { AppState } from '@redux/reducers';
 
-type IProps = RouteComponentProps & {};
+type IProps = RouteComponentProps & ICartoonReduceState;
+// @connect(
+//   (state) => state.cartoon,
+//   (dispatch) => bindActionCreators(cartoonAction, dispatch)
+// )
 class Navigation extends React.Component<IProps, { curNavTab: string }> {
   constructor(props: any) {
     super(props);
     this.state = {
-      curNavTab: 'user'
+      curNavTab: 'cartoon'
     };
     this.chooseTab = this.chooseTab.bind(this);
   }
@@ -62,4 +71,7 @@ class Navigation extends React.Component<IProps, { curNavTab: string }> {
   }
 }
 
-export default Navigation;
+export default connect(
+  (state: AppState) => state.cartoon,
+  (dispatch) => bindActionCreators(cartoonAction, dispatch)
+)(Navigation);
