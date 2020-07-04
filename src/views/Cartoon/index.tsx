@@ -3,11 +3,11 @@
  * @Description: 漫画首页
  * @Date: 2020-07-01 16:34:39
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-03 18:35:59
+ * @Last Modified time: 2020-07-04 11:15:28
  */
 
 import React from 'react';
-import { ICartoonHomeRes, CartoonOtherRecommendInfo } from '@typings/cartoon';
+import { CartoonOtherRecommendInfo } from '@typings/cartoon';
 // import CartoonNormalList from '@components/CartoonNormalList';
 // import Scroll from '@components/Scroll';
 import Slider from '@components/Slider';
@@ -18,20 +18,20 @@ import { chunk } from 'lodash-es';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ICartoonReduceState } from '@redux/reducers/cartoon';
-import { requestCartoonHomeInfo } from '@redux/actions/cartoon';
+import {
+  requestCartoonHomeInfo,
+  requestCartoonDeatilInfo
+} from '@redux/actions/cartoon';
 import { AppState } from '@redux/reducers';
 
-type IProps = RouteComponentProps & ICartoonReduceState & {requestCartoonHomeInfo: typeof requestCartoonHomeInfo};
-class Cartoon extends React.Component<IProps, { homeInfo: ICartoonHomeRes }> {
+type IProps = RouteComponentProps &
+  ICartoonReduceState & {
+    requestCartoonHomeInfo: typeof requestCartoonHomeInfo;
+    requestCartoonDeatilInfo: typeof requestCartoonDeatilInfo;
+  };
+class Cartoon extends React.Component<IProps> {
   constructor(props: any) {
     super(props);
-    this.state = {
-      homeInfo: {
-        hotCartoonRecommends: [],
-        latestRecommends: [],
-        otherRecommendList: []
-      }
-    };
   }
 
   public componentDidMount() {
@@ -41,10 +41,14 @@ class Cartoon extends React.Component<IProps, { homeInfo: ICartoonHomeRes }> {
   /** 查看动漫详情 */
   @autobind
   public toCheckDetail(cartoonInfo: CartoonOtherRecommendInfo) {
-    console.log(cartoonInfo);
-    this.props.history.push({
-      pathname: `/cartoonDeatil/${encodeURIComponent(cartoonInfo.detailHref)}`
-    });
+    this.props.requestCartoonDeatilInfo(
+      { cartoonPath: cartoonInfo.detailHref },
+      () => {
+        this.props.history.push({
+          pathname: 'cartoonDeatil'
+        });
+      }
+    );
   }
 
   render() {
@@ -85,5 +89,9 @@ class Cartoon extends React.Component<IProps, { homeInfo: ICartoonHomeRes }> {
 
 export default connect(
   (state: AppState) => state.cartoon,
-  (dispatch) => bindActionCreators({ requestCartoonHomeInfo }, dispatch)
+  (dispatch) =>
+    bindActionCreators(
+      { requestCartoonHomeInfo, requestCartoonDeatilInfo },
+      dispatch
+    )
 )(withRouter(Cartoon));

@@ -27,11 +27,11 @@ class App extends React.Component {
           <Route exact path="/" component={NavigationComponent}></Route>
           <Route
             exact
-            path="/cartoonDeatil/:detailPath"
+            path="/cartoonDeatil"
             component={CartoonDeatil}
           ></Route>
           <Route
-            path="/sectionDetail/:detailPath"
+            path="/sectionDetail"
             component={SectionDeatil}
           ></Route>
         </Router>

@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import { SectionInfo } from '@typings/cartoon';
 import { RouteComponentProps } from 'react-router-dom';
-import { sectionDeatilInfo } from '@services/cartoon';
 import NormalPage from '@components/NormalPage';
 import Scroll from '@components/Scroll';
 import { autobind } from 'core-decorators';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ICartoonReduceState } from '@redux/reducers/cartoon';
+import { requestCartoonSectionDeatilInfo } from '@redux/actions/cartoon';
+import { AppState } from '@redux/reducers';
 
-type Props = RouteComponentProps<{ detailPath: string }>;
+type Props = RouteComponentProps &
+  ICartoonReduceState & {
+    requestCartoonSectionDeatilInfo: typeof requestCartoonSectionDeatilInfo;
+  };
 interface State {
-  sectionInfo: SectionInfo | null;
   imageLoadArr: any[];
 }
 
@@ -16,44 +22,25 @@ export class SectionDetail extends Component<Props, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      sectionInfo: null,
       imageLoadArr: []
     };
-  }
-
-  public componentDidMount() {
-    const sectionPath = decodeURIComponent(this.props.match.params.detailPath);
-
-    this.getSectionInfo(sectionPath);
-  }
-
-  /** 请求章节信息 */
-  private async getSectionInfo(sectionPath:string) {
-    this.setState({
-      sectionInfo: null,
-      imageLoadArr: []
-    });
-    const { data } = await sectionDeatilInfo({ sectionPath });
-
-    if (data.isOk) {
-      this.setState({
-        sectionInfo: data.result
-      });
-    }
   }
 
   /** 跳入下一章 */
   @autobind
   private toNextSection() {
-    const nextSectionHref = this.state.sectionInfo?.nextSectionHref;
+    const nextSectionHref = this.props.sectionInfo?.nextSectionHref;
 
     if (nextSectionHref) {
-      this.getSectionInfo(nextSectionHref);
+      this.props.requestCartoonSectionDeatilInfo({
+        sectionPath: nextSectionHref
+      });
     }
   }
 
   render() {
-    const { sectionInfo, imageLoadArr } = this.state;
+    const { imageLoadArr } = this.state;
+    const { sectionInfo } = this.props;
 
     return (
       <NormalPage
@@ -81,4 +68,8 @@ export class SectionDetail extends Component<Props, State> {
   }
 }
 
-export default SectionDetail;
+export default connect(
+  (state: AppState) => state.cartoon,
+  (dispatch) =>
+    bindActionCreators({ requestCartoonSectionDeatilInfo }, dispatch)
+)(SectionDetail);

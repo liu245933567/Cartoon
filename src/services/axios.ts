@@ -9,9 +9,7 @@ axios.defaults.withCredentials = WITHCREDENTIALS;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 axios.defaults.timeout = 180000;
 
-/**
- * request之前的处理
- */
+/** request之前的处理 */
 axios.interceptors.request.use(
   (config) => {
     store.dispatch(changeLoading({ isLoading: true }));
@@ -23,9 +21,7 @@ axios.interceptors.request.use(
   }
 );
 
-/**
- * response之后的处理
- */
+/** response之后的处理 */
 axios.interceptors.response.use(
   (response) => {
     store.dispatch(changeLoading({ isLoading: false }));
@@ -50,7 +46,7 @@ function get(url: string) {
   return (config?: AxiosRequestConfig) => axios.get(url, config);
 }
 
-// post请求
+/** Axios post请求 */
 function post<ReqT, ResT>(url: string, data?: ReqT) {
   return axios.post<ResponseData<ResT>>(url, data);
 }
