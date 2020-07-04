@@ -6,6 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack');
 const cssProcessor = require('cssnano');
 
@@ -94,6 +96,23 @@ const prodConfig = {
     new ScriptExtHtmlWebpackPlugin({
       //`runtime` must same as runtimeChunk name. default is `runtime`
       inline: /runtime\..*\.js$/
+    }),
+    new CompressionWebpackPlugin({
+      filename: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: new RegExp('\\.(js|css)$'),
+      threshold: 10240,
+      minRatio: 0.8
+    }),
+    new webpack.BannerPlugin('当年明月在，曾照彩云归'),
+    // new CopyWebpackPlugin([{
+    //   from: path.resolve(__dirname, '../doc'),
+    //   to: path.resolve(__dirname, '../dist')
+    // }])
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, '../doc'), to: path.resolve(__dirname, '../dist') }
+      ]
     })
   ],
   module: {

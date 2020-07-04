@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404</title>
+    <style>
+      .content-wrapper {
+        width: 500px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #0e0a0a44;
+      }
+      .err-tip {
+        font-size: 60px;
+        font-weight: bold;
+      }
+      #number {
+        font-size: 28px;
+        font-family: fantasy;
+      }
+      .back-btn {
+        width: 140px;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid;
+        text-align: center;
+        font-size: 16px;
+        margin: auto;
+        margin-top: 30px;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <div class="err-tip">404 ERROR!</div>
+      <div>很抱歉，您要访问的页面不存在~ <span id="number">5</span></div>
+      <div class="back-btn" onclick="toHome()">
+        <span>进入首页</span>
+      </div>
+    </div>
+  </body>
+  <script>
+    var numEl = document.getElementById("number");
+    var cutDownNum = Number(numEl.innerHTML);
+    console.log(cutDownNum);
+    var timer = setInterval(function () {
+      cutDownNum -= 1;
+      if (cutDownNum == -1) {
+        clearInterval(timer);
+        window.location.href = "http://yanyuge.xyz";
+      } else {
+        numEl.innerHTML = cutDownNum;
+      }
+    }, 1000);
+    function toHome() {
+      window.location.href = "http://yanyuge.xyz";
+    }
+  </script>
+</html>
