@@ -42,7 +42,7 @@ class CartoonDetail extends React.Component<IProps> {
     const { cartoonDetailInfo } = this.props;
 
     return (
-      <NormalPage>
+      <NormalPage headerText={cartoonDetailInfo?.cartoonName}>
         <div className="CartoonDetail-Page-Wrapper">
           <CartoonInfo cartoonInfo={cartoonDetailInfo as ICartoonDetail} />
           <Scroll>

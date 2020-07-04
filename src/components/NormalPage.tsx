@@ -3,7 +3,7 @@
  * @Description: 公共页面模板组件
  * @Date: 2020-06-26 11:45:27
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-03 23:32:26
+ * @Last Modified time: 2020-07-04 11:21:46
  */
 
 import React from 'react';
@@ -46,10 +46,10 @@ class NormalPage extends React.Component<IProps> {
               onLeftClick={() => {
                 this.props.history.go(-1);
               }}
-              rightContent={[
-                <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-                <Icon key="1" type="ellipsis" />
-              ]}
+              // rightContent={[
+              //   <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
+              //   <Icon key="1" type="ellipsis" />
+              // ]}
             >
               {headerText}
             </NavBar>

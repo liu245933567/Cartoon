@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { SectionInfo } from '@typings/cartoon';
 import { RouteComponentProps } from 'react-router-dom';
 import NormalPage from '@components/NormalPage';
 import Scroll from '@components/Scroll';
@@ -61,7 +60,9 @@ export class SectionDetail extends Component<Props, State> {
               )}
             </div>
           </Scroll>
-          <div className="next-section" onClick={this.toNextSection} />
+          {sectionInfo?.nextSectionHref &&
+            <div className="next-section" onClick={this.toNextSection} />
+          }
         </div>
       </NormalPage>
     );
