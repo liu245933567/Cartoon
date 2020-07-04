@@ -40,11 +40,11 @@ const prodConfig = {
           }
         },
         sourceMap: true
-      }),
-      // 告诉 Webpack 使用了哪些动态链接库
-      new webpack.DllReferencePlugin({
-        manifest: path.join(__dirname, '../dll/vendor.manifest.json')
       })
+      // 告诉 Webpack 使用了哪些动态链接库
+      // new webpack.DllReferencePlugin({
+      //   manifest: path.join(__dirname, '../dll/vendor.manifest.json')
+      // })
     ],
     splitChunks: {
       chunks: 'async', // 提取的 chunk 类型，all: 所有，async: 异步，initial: 初始
@@ -78,6 +78,7 @@ const prodConfig = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'public/index.html',
+      favicon: path.resolve(__dirname, '../src/assets/favicon.ico'),
       inject: true,
       minify: {
         removeComments: true, // 去掉注释
