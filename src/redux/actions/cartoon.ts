@@ -12,7 +12,7 @@ import {
   CartoonDetail,
   ISectionDeatilInfoReq,
   SectionInfo,
-  ISearchPageInfo,
+  // ISearchPageInfo,
   ISearchCartonReq,
   CartoonOtherRecommendInfo
 } from '@typings/cartoon';
