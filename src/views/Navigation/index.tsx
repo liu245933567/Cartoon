@@ -3,16 +3,17 @@
  * @Description: 首页导航页
  * @Date: 2020-07-01 14:27:14
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-03 15:41:17
+ * @Last Modified time: 2020-07-04 22:48:40
  */
 
 import * as React from 'react';
 import NormalPage from '@components/NormalPage';
 import NavTab from '@components/NavTab';
-import Home from '@views/Home';
-import Movie from '@views/Movie';
+// import Home from '@views/Home';
+// import Movie from '@views/Movie';
+// import User from '@views/User';
 import Cartoon from '@views/Cartoon';
-import User from '@views/User';
+
 
 type IProps = {};
 
@@ -31,22 +32,23 @@ class Navigation extends React.Component<IProps, { curNavTab: string }> {
       curNavTab: tabId
     });
   }
+
   render() {
     const { curNavTab } = this.state;
-    const Content = () => {
-      switch (curNavTab) {
-        case 'home':
-          return <Home />;
-        case 'movie':
-          return <Movie />;
-        case 'cartoon':
-          return <Cartoon />;
-        case 'user':
-          return <User />;
-        default:
-          return <Home />;
-      }
-    };
+    // const Content = () => {
+    //   switch (curNavTab) {
+    //     case 'home':
+    //       return <Home />;
+    //     case 'movie':
+    //       return <Movie />;
+    //     case 'cartoon':
+    //       return <Cartoon />;
+    //     case 'user':
+    //       return <User />;
+    //     default:
+    //       return <Home />;
+    //   }
+    // };
 
     return (
       <NormalPage
@@ -56,7 +58,8 @@ class Navigation extends React.Component<IProps, { curNavTab: string }> {
         showFooter
         showHeader={false}
       >
-        <Content />
+        {/* <Content /> */}
+        <Cartoon />
       </NormalPage>
     );
   }

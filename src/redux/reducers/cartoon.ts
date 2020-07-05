@@ -1,22 +1,31 @@
-import { ICartoonHomeRes, CartoonDetail, SectionInfo } from '@typings/cartoon';
+import {
+  ICartoonHomeRes,
+  CartoonDetail,
+  SectionInfo,
+  CartoonOtherRecommendInfo
+} from '@typings/cartoon';
 import { ICartoonAction } from '../actions/cartoon';
 import {
   REQUEST_CARTOON_HOMEINFO,
   REQUEST_CARTOON_DETAILINFO,
-  REQUEST_CARTOON_SECTIONINFO
+  REQUEST_CARTOON_SECTIONINFO,
+  REQUEST_SEARCH_CARTOON
 } from '../constants';
 
 const initState = {
   hotCartoonRecommends: [],
   latestRecommends: [],
   otherRecommendList: [],
+  categorys: [],
   cartoonDetailInfo: null,
-  sectionInfo: null
+  sectionInfo: null,
+  searchResultList: []
 };
 
 export type ICartoonReduceState = ICartoonHomeRes & {
   cartoonDetailInfo: CartoonDetail | null;
   sectionInfo: SectionInfo | null;
+  searchResultList: CartoonOtherRecommendInfo[];
 };
 
 /** 动漫模块 reducer */
@@ -39,6 +48,11 @@ const cartoon = (
       return {
         ...state,
         sectionInfo: action.result
+      };
+    case REQUEST_SEARCH_CARTOON:
+      return {
+        ...state,
+        searchResultList: action.result
       };
     default:
       return state;

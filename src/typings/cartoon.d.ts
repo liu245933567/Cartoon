@@ -71,7 +71,7 @@ export interface CartoonDetail extends CartoonRecommendInfo {
   /** 相关推荐 */
   recommendList: CartoonOtherRecommendInfo[];
   /** 章节列表 */
-  sectionList: SectionBaseInfo[]
+  sectionList: SectionBaseInfo[];
 }
 
 /** 章节详情完整信息 */
@@ -86,14 +86,30 @@ export interface SectionInfo extends SectionBaseInfo {
   nextSectionHref: string;
 }
 
+/** 动漫类型标签 */
+export interface ICartoonCategory {
+  /** 种类名称 */
+  category: string;
+  /** 种类code */
+  categoryKey: string;
+}
+
+export interface IPageNav {
+  /** 页码名称 */
+  page: string;
+  /** 页码地址 */
+  pageHref: string;
+}
+
 /** 首页信息 */
 export interface ICartoonHomeRes {
   /** 热门推荐 */
-  hotCartoonRecommends: CartoonRecommendInfo[] | never[];
+  hotCartoonRecommends: CartoonRecommendInfo[];
   /** 最新更新推荐 */
-  latestRecommends: CartoonRecommendInfo[] | never[];
+  latestRecommends: CartoonRecommendInfo[];
   /** 其他推荐列表 */
-  otherRecommendList: OtherRecommend[] | never[];
+  otherRecommendList: OtherRecommend[];
+  categorys: ICartoonCategory[];
 }
 /** 动漫详情请求参数 */
 export interface ICartoonDeatilInfoReq {
@@ -105,4 +121,37 @@ export interface ICartoonDeatilInfoReq {
 export interface ISectionDeatilInfoReq {
   /** 章节详情路径 */
   sectionPath: string;
+}
+
+/** 查询动漫参数 */
+export interface ISearchCartonReq {
+  searchStr: string;
+}
+
+/** 种类查询结果 */
+export interface ICategoryPageInfo {
+  /** 热门排行 */
+  hotRankingList: CartoonBaseInfo[];
+  /** 最新排行 */
+  latestRankingList: CartoonBaseInfo[];
+  /** 热门推荐 */
+  hotCartoonRecommends: CartoonOtherRecommendInfo[];
+  /** 动漫列表 */
+  cartoonList: CartoonOtherRecommendInfo[];
+  /** 页码列表 */
+  pageList: IPageNav[];
+}
+
+/** 字母查询结果 */
+export interface ILetterPageInfo {
+  /** 动漫列表 */
+  cartoonList: CartoonOtherRecommendInfo[];
+  /** 页码列表 */
+  pageList: IPageNav[];
+}
+
+/** 动漫查询结果 */
+export interface ISearchPageInfo {
+  /** 动漫列表 */
+  cartoonList: CartoonOtherRecommendInfo[];
 }

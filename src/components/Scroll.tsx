@@ -15,6 +15,7 @@ const defProps = {
   beforeScroll: false,
   refreshDelay: 20,
   pullupDistance: 50,
+  stopPropagation: false,
   hasMore: true,
   loadingText: '努力加载中...',
   pullDownText: '下拉刷新',
@@ -78,7 +79,8 @@ class Scroll extends React.Component<IScrollProps, IScrollState> {
       pulldown,
       pullupDistance,
       pullup,
-      scrollbar
+      scrollbar,
+      stopPropagation
     } = this.props;
 
     console.log('scrollX', scrollX);
@@ -87,6 +89,7 @@ class Scroll extends React.Component<IScrollProps, IScrollState> {
       click,
       scrollX,
       scrollY,
+      stopPropagation,
       // pc端同样能滑动
       mouseWheel: {
         speed: 20,

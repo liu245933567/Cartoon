@@ -6,17 +6,22 @@ import {
 } from '@typings/cartoon';
 
 interface Iprops {
-  cartoonList: CartoonRecommendInfo[];
-  clickHandle: (cartoonInfo: CartoonOtherRecommendInfo) => void;
+  /** 动漫列表 */
+  cartoonList: CartoonRecommendInfo[] | CartoonOtherRecommendInfo[];
+  /** 标题 */
+  title?: string;
+  /** 动漫点击回调 */
+  clickHandle: (cartoonInfo: CartoonOtherRecommendInfo | CartoonRecommendInfo) => void;
 }
 
 const CartoonNormalList: React.FC<Iprops> = ({
   cartoonList,
+  title,
   clickHandle
 }: Iprops) => {
   return (
     <div className="CartoonNormalList-Component-Wrapper">
-      <h2 className="List-type">热门动漫</h2>
+      {title && <h2 className="List-type">{title}</h2>}
       <div className="List-wrapper">
         {cartoonList.map((cartoonInfo) => {
           return (
@@ -33,7 +38,8 @@ const CartoonNormalList: React.FC<Iprops> = ({
 };
 
 CartoonNormalList.defaultProps = {
-  cartoonList: []
+  cartoonList: [],
+  clickHandle: () => ({})
 };
 
 export default CartoonNormalList;

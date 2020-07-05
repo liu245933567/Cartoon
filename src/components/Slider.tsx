@@ -3,7 +3,7 @@
  * @Description: 轮播图组件
  * @Date: 2020-07-03 02:31:12
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-03 15:37:12
+ * @Last Modified time: 2020-07-04 23:35:32
  */
 
 import React from 'react';
@@ -53,12 +53,12 @@ class Slider extends React.Component<IProps, IState> {
   public componentDidMount() {
     setTimeout(() => {
       this._setSliderWidth();
-      this._initDots();
+      // this._initDots();
       this._initSlider();
 
-      if (this.props.autoPlay) {
-        this._play();
-      }
+      // if (this.props.autoPlay) {
+      //   this._play();
+      // }
     }, 20);
 
     window.addEventListener('resize', () => {
@@ -70,22 +70,22 @@ class Slider extends React.Component<IProps, IState> {
     });
   }
 
-  public componentWillUnmount() {
-    if (this.timer) {
-      clearTimeout(this.timer);
-    }
-  }
+  // public componentWillUnmount() {
+  //   if (this.timer) {
+  //     clearTimeout(this.timer);
+  //   }
+  // }
 
-  public componentDidUpdate(pevProps: IProps) {
-    if (JSON.stringify(pevProps.data) !== JSON.stringify(this.props.data)) {
-      if (!this.slider) {
-        return;
-      }
-      this._initDots();
-      this._setSliderWidth(true);
-      this.slider.refresh();
-    }
-  }
+  // public componentDidUpdate(pevProps: IProps) {
+  //   if (JSON.stringify(pevProps.data) !== JSON.stringify(this.props.data)) {
+  //     if (!this.slider) {
+  //       return;
+  //     }
+  //     this._initDots();
+  //     this._setSliderWidth(true);
+  //     this.slider.refresh();
+  //   }
+  // }
 
   /** 设置轮播图宽度 */
   @autobind
@@ -97,6 +97,7 @@ class Slider extends React.Component<IProps, IState> {
 
     if (children) {
       for (let i = 0; i < children.length; i++) {
+        console.log('children ------ ', children);
         let child = children[i] as HTMLElement;
 
         addClass(child, 'slider-item');
@@ -121,6 +122,7 @@ class Slider extends React.Component<IProps, IState> {
       scrollX: true,
       scrollY: false,
       momentum: false,
+      preventDefault: true,
       click: true,
       snap: {
         loop: true,
@@ -129,20 +131,20 @@ class Slider extends React.Component<IProps, IState> {
       }
     });
 
-    this.slider.on('scrollEnd', () => {
-      let pageIndex = this.slider!.getCurrentPage().pageX;
+    // this.slider.on('scrollEnd', () => {
+    //   let pageIndex = this.slider!.getCurrentPage().pageX;
 
-      // if (loop) {
-      //   pageIndex -= 1;
-      // }
-      this.setState({
-        currentPageIndex: pageIndex
-      });
+    //   // if (loop) {
+    //   //   pageIndex -= 1;
+    //   // }
+    //   this.setState({
+    //     currentPageIndex: pageIndex
+    //   });
 
-      if (autoPlay) {
-        this._play();
-      }
-    });
+    //   // if (autoPlay) {
+    //   //   this._play();
+    //   // }
+    // });
 
     this.slider.on('beforeScrollStart', () => {
       if (autoPlay && this.timer) {

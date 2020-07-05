@@ -3,7 +3,7 @@
  * @Description: 动漫单个组件，带预览图
  * @Date: 2020-06-26 14:43:33
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-01 18:48:55
+ * @Last Modified time: 2020-07-04 23:20:58
  */
 
 import React from 'react';
@@ -24,6 +24,7 @@ const CartoonCover: React.FC<IProps> = ({
     <div
       className="CartoonCover-Component-Wrapper"
       onClick={() => {
+        console.log('击此');
         clickHandle(cartoonInfo);
       }}
     >

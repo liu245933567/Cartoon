@@ -2,19 +2,25 @@ import { Dispatch } from 'redux';
 import {
   REQUEST_CARTOON_HOMEINFO,
   REQUEST_CARTOON_DETAILINFO,
-  REQUEST_CARTOON_SECTIONINFO
+  REQUEST_CARTOON_SECTIONINFO,
+  // REQUEST_CATEGORY_SEARCH,
+  REQUEST_SEARCH_CARTOON
 } from '../constants';
 import {
   ICartoonHomeRes,
   ICartoonDeatilInfoReq,
   CartoonDetail,
   ISectionDeatilInfoReq,
-  SectionInfo
+  SectionInfo,
+  ISearchPageInfo,
+  ISearchCartonReq,
+  CartoonOtherRecommendInfo
 } from '@typings/cartoon';
 import {
   cartoonHomeInfo,
   cartoonDeatilInfo,
-  sectionDeatilInfo
+  sectionDeatilInfo,
+  searchCartoon
 } from '@services/cartoon';
 
 export interface IRequestCartoonHomeInfoAction {
@@ -81,8 +87,31 @@ export const requestCartoonSectionDeatilInfo = (
   }
 };
 
+export interface IRequestSearchCartoonAction {
+  type: REQUEST_SEARCH_CARTOON;
+  result: CartoonOtherRecommendInfo[];
+}
+/** 请求动漫查询接口 */
+export const requestSearchCartoon = (params: ISearchCartonReq) => async (
+  dispatch: Dispatch<IRequestSearchCartoonAction>
+) => {
+  dispatch({
+    type: REQUEST_SEARCH_CARTOON,
+    result: []
+  });
+  const { data } = await searchCartoon(params);
+
+  if (data.isOk) {
+    dispatch({
+      type: REQUEST_SEARCH_CARTOON,
+      result: data.result
+    });
+  }
+};
+
 /** 总类型 */
 export type ICartoonAction =
   | IRequestCartoonHomeInfoAction
   | IRequestCartoonDeatilInfoAction
-  | IRequestCartoonSectionDeatilAction;
+  | IRequestCartoonSectionDeatilAction
+  | IRequestSearchCartoonAction;

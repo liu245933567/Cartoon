@@ -8,7 +8,7 @@ export function addClass(el: HTMLElement | Element, className: string) {
   if (hasClass(el, className)) {
     return;
   }
-
+  console.log('加一次');
   let newClass = el.className.split(' ');
 
   newClass.push(className);

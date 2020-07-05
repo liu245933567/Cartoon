@@ -12,6 +12,7 @@ const devConfig = {
     host: '0.0.0.0',
     port: 8200,
     historyApiFallback: true,
+    disableHostCheck: true,
     overlay: {//当出现编译器错误或警告时，就在网页上显示一层黑色的背景层和错误信息
       errors: true
     },

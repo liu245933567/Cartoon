@@ -15,6 +15,8 @@ export interface IScrollProps {
   scrollY: boolean;
   /** 是否派发滚动事件 */
   listenScroll: boolean;
+  /** 是否阻止事件冒泡。多用在嵌套 scroll 的场景。 */
+  stopPropagation: boolean;
   /** 内容数据 */
   data: any;
   /** 是否派发滚动到底部的事件，用于上拉加载 */

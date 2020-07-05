@@ -1,14 +1,29 @@
 .Cartoon-Page-Wrapper {
   height: 100%;
-  .Slider-Component-Wrapper {
-    margin-top: 10px;
-  }
-  .test {
+  .Slider-Item {
     display: flex;
     justify-content: space-between;
     padding: 0 0.25rem;
+    margin-top: 10px;
   }
+
   .Scroll_Component_wrapper {
     height: 100%;
+    .bbbbbbb {
+      padding: 0.266667rem /* 20/75 */;
+      overflow: hidden;
+      .Scroll_Component_wrapper {
+        .aaaaaaa {
+          display: flex;
+          width: max-content;
+          & > div {
+            margin-right: 0.2127rem;
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
   }
 }
