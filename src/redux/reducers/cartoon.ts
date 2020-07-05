@@ -2,7 +2,8 @@ import {
   ICartoonHomeRes,
   CartoonDetail,
   SectionInfo,
-  CartoonOtherRecommendInfo
+  CartoonOtherRecommendInfo,
+  ICartoonHistory
 } from '@typings/cartoon';
 import { ICartoonAction } from '../actions/cartoon';
 import {
@@ -11,6 +12,7 @@ import {
   REQUEST_CARTOON_SECTIONINFO,
   REQUEST_SEARCH_CARTOON
 } from '../constants';
+import { setCartoonHistory, getCartoonHistory } from '@store/cartoon';
 
 const initState = {
   hotCartoonRecommends: [],
@@ -34,26 +36,53 @@ const cartoon = (
   action: ICartoonAction
 ): ICartoonReduceState => {
   switch (action.type) {
-    case REQUEST_CARTOON_HOMEINFO:
+    case REQUEST_CARTOON_HOMEINFO: {
       return {
         ...state,
         ...action.result
       };
-    case REQUEST_CARTOON_DETAILINFO:
+    }
+
+    case REQUEST_CARTOON_DETAILINFO: {
+      const { detailHref, sectionList } = action.result;
+      const cartoonHistory = getCartoonHistory(detailHref) as
+        | ICartoonHistory
+        | undefined;
+
+      if (cartoonHistory) {
+        const { watchedSections } = cartoonHistory;
+
+        sectionList.forEach((section, sectionIndex) => {
+          for (let i = 0; i < watchedSections.length; i++) {
+            if (section.sectionId === watchedSections[i].sectionId) {
+              action.result.sectionList[sectionIndex].isWatched = true;
+            }
+          }
+        });
+      }
       return {
         ...state,
         cartoonDetailInfo: action.result
       };
-    case REQUEST_CARTOON_SECTIONINFO:
+    }
+    case REQUEST_CARTOON_SECTIONINFO: {
+      setCartoonHistory(
+        state.cartoonDetailInfo as CartoonDetail,
+        action.result
+      );
       return {
         ...state,
         sectionInfo: action.result
       };
-    case REQUEST_SEARCH_CARTOON:
+    }
+
+    case REQUEST_SEARCH_CARTOON: {
       return {
         ...state,
         searchResultList: action.result
       };
+    }
+
     default:
       return state;
   }

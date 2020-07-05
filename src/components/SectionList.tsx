@@ -25,7 +25,7 @@ const SectionList: React.FC<IProps> = ({
           return (
             <div
               key={section.sectionHref}
-              className="section-item"
+              className={`section-item ${section.isWatched && 'section-item-watched'}`}
               onClick={() => {
                 clickHandle(section);
               }}

@@ -16,6 +16,11 @@
       align-items: center;
       border: 1px solid #999;
       border-radius: 0.13333rem;
+      &-watched{
+        background: $activeColor;
+        color: #fff;
+        border: 0;
+      }
     }
   }
 }
