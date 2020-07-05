@@ -2,8 +2,7 @@ import {
   ICartoonHomeRes,
   CartoonDetail,
   SectionInfo,
-  CartoonOtherRecommendInfo,
-  ICartoonHistory
+  CartoonOtherRecommendInfo
 } from '@typings/cartoon';
 import { ICartoonAction } from '../actions/cartoon';
 import {
@@ -12,7 +11,7 @@ import {
   REQUEST_CARTOON_SECTIONINFO,
   REQUEST_SEARCH_CARTOON
 } from '../constants';
-import { setCartoonHistory, getCartoonHistory } from '@store/cartoon';
+import { setCartoonHistory } from '@store/cartoon';
 
 const initState = {
   hotCartoonRecommends: [],
@@ -44,22 +43,6 @@ const cartoon = (
     }
 
     case REQUEST_CARTOON_DETAILINFO: {
-      const { detailHref, sectionList } = action.result;
-      const cartoonHistory = getCartoonHistory(detailHref) as
-        | ICartoonHistory
-        | undefined;
-
-      if (cartoonHistory) {
-        const { watchedSections } = cartoonHistory;
-
-        sectionList.forEach((section, sectionIndex) => {
-          for (let i = 0; i < watchedSections.length; i++) {
-            if (section.sectionId === watchedSections[i].sectionId) {
-              action.result.sectionList[sectionIndex].isWatched = true;
-            }
-          }
-        });
-      }
       return {
         ...state,
         cartoonDetailInfo: action.result

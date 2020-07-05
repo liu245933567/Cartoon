@@ -3,13 +3,15 @@ import { autobind } from 'core-decorators';
 import { RouteComponentProps } from 'react-router-dom';
 import {
   CartoonDetail as ICartoonDetail,
-  SectionBaseInfo
+  SectionBaseInfo,
+  ICartoonHistory
 } from '@typings/cartoon';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ICartoonReduceState } from '@redux/reducers/cartoon';
 import { requestCartoonSectionDeatilInfo } from '@redux/actions/cartoon';
 import { AppState } from '@redux/reducers';
+import { getCartoonHistory } from '@store/cartoon';
 import CartoonInfo from '@components/CartoonInfo';
 import SectionList from '@components/SectionList';
 import Scroll from '@components/Scroll';
@@ -40,6 +42,29 @@ class CartoonDetail extends React.Component<IProps> {
 
   render() {
     const { cartoonDetailInfo } = this.props;
+    let sections = cartoonDetailInfo?.sectionList;
+
+    if (cartoonDetailInfo) {
+      const cartoonHistory = getCartoonHistory(cartoonDetailInfo.detailHref) as
+        | ICartoonHistory
+        | undefined;
+
+      if (cartoonHistory) {
+        const { watchedSections } = cartoonHistory;
+
+          sections = cartoonDetailInfo.sectionList.map((section) => {
+            const cur = section;
+
+            for (let i = 0; i < watchedSections.length; i++) {
+              if (section.sectionId === watchedSections[i].sectionId) {
+                cur.isWatched = true;
+                break;
+              }
+            }
+            return cur;
+          });
+      }
+    }
 
     return (
       <NormalPage headerText={cartoonDetailInfo?.cartoonName}>
@@ -47,7 +72,7 @@ class CartoonDetail extends React.Component<IProps> {
           <CartoonInfo cartoonInfo={cartoonDetailInfo as ICartoonDetail} />
           <Scroll>
             <SectionList
-              sectionList={cartoonDetailInfo?.sectionList}
+              sectionList={sections}
               clickHandle={this.toCheckSection}
             />
           </Scroll>
