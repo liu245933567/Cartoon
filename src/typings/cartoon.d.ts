@@ -52,6 +52,10 @@ export interface SectionBaseInfo {
   sectionHref: string;
   /** 章节标题 */
   sectionTitle: string;
+  /** 章节 id */
+  sectionId: number;
+  /** 是否观看过 */
+  isWatched: boolean;
 }
 
 /** 动漫详情信息 */
@@ -76,6 +80,8 @@ export interface CartoonDetail extends CartoonRecommendInfo {
 
 /** 章节详情完整信息 */
 export interface SectionInfo extends SectionBaseInfo {
+  /** 章节id */
+  sectionId: number;
   /** 章节图片 */
   sectionImages: string[];
   /** 章节标题 */
@@ -154,4 +160,14 @@ export interface ILetterPageInfo {
 export interface ISearchPageInfo {
   /** 动漫列表 */
   cartoonList: CartoonOtherRecommendInfo[];
+}
+
+/** 历史记录 */
+export interface ICartoonHistory extends CartoonOtherRecommendInfo {
+  /** 观看到的章节 */
+  anchorSection: string;
+  /** 观看到的章节路径 */
+  anchorSectionHref: string;
+  /** 观看过的章节列表 */
+  watchedSections: SectionBaseInfo[];
 }

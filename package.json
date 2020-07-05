@@ -36,7 +36,8 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "rgbaster": "^2.1.1"
+    "rgbaster": "^2.1.1",
+    "store": "^2.0.12"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
@@ -60,6 +61,7 @@
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
     "@types/redux-thunk": "^2.1.0",
+    "@types/store": "^2.0.2",
     "@types/webpack-env": "^1.15.2",
     "@typescript-eslint/eslint-plugin": "^3.4.0",
     "@typescript-eslint/parser": "^3.4.0",
