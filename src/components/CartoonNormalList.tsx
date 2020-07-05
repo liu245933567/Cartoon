@@ -23,6 +23,7 @@ const CartoonNormalList: React.FC<Iprops> = ({
     <div className="CartoonNormalList-Component-Wrapper">
       {title && <h2 className="List-type">{title}</h2>}
       <div className="List-wrapper">
+        {/* @ts-ignore */}
         {cartoonList.map((cartoonInfo) => {
           return (
             <CartoonCover
