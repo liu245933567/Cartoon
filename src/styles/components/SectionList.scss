@@ -1,0 +1,26 @@
+.SectionList-Component-Wrapper {
+  .section-list {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: flex-end;
+    .section-item {
+      width: 2.8rem;
+      height: 0.9rem;
+      padding: 0 0.1rem;
+      box-sizing: border-box;
+      margin: 0.1rem 0.24rem;
+      text-align: center;
+      font-size: 0.3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #999;
+      border-radius: 0.13333rem;
+      &-watched{
+        background: $activeColor;
+        color: #fff;
+        border: 0;
+      }
+    }
+  }
+}

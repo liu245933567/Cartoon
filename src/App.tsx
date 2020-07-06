@@ -1,31 +1,41 @@
 import * as React from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
+import store from '@redux/store';
 
-const HomeComponent = loadable(() => import(/* webpackChunkName: "home" */ './views/Home'));
-const AboutComponent = loadable(() => import(/* webpackChunkName: "about" */ './views/About'));
+/** 导航页 */
+const NavigationComponent = loadable(() =>
+  import(/* webpackChunkName: "navigation" */ './views/Navigation')
+);
+
+/** 动漫详情页 */
+const CartoonDeatil = loadable(() =>
+  import(/* webpackChunkName: "cartonDeatil" */ './views/CartoonDetail')
+);
+
+/** 章节详情页 */
+const SectionDeatil = loadable(() =>
+  import(/* webpackChunkName: "cartonDeatil" */ './views/SectionDetail')
+);
 
 class App extends React.Component {
-
-
   render() {
-
     return (
-      <div className="app">
+      <Provider store={store}>
         <Router>
-          <ul>
-            <li>
-              <Link to="/">To Home</Link>
-            </li>
-            <li>
-              <Link to="/about">To About</Link>
-            </li>
-          </ul>
-          <Route exact path='/' component={HomeComponent}></Route>
-          <Route path='/about' component={AboutComponent}></Route>
+          <Route exact path="/" component={NavigationComponent}></Route>
+          <Route
+            exact
+            path="/cartoonDeatil"
+            component={CartoonDeatil}
+          ></Route>
+          <Route
+            path="/sectionDetail"
+            component={SectionDeatil}
+          ></Route>
         </Router>
-        <p className="aps">hahahaahhahhahahaha</p>
-      </div>
+      </Provider>
     );
   }
 }

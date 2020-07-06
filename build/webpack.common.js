@@ -1,6 +1,5 @@
 const path = require('path');
 const { resolve } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -43,7 +42,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 10* 1024,
+              limit: 10 * 1024,
               name: path.join('font/[name].[hash:7].[ext]')
             }
           }
@@ -54,21 +53,21 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.vue', '.less', '.scss'],
     alias: {
-      '@': resolve('../src'),
-      '@components': resolve('../src/components'),
-      '@images': resolve('../src/assets/images'),
-      '@utils':resolve('../src/utils'),
-      '@styles':resolve(__dirname, '../src/styles'),
-      '@views':resolve('../src/views'),
-      '@services':resolve('../src/services')
+      '@': resolve(__dirname, '../src'),
+      '@config': resolve(__dirname, '../src/config'),
+      '@utils': resolve(__dirname, '../src/utils'),
+      '@redux': resolve(__dirname, '../src/redux'),
+      '@store': resolve(__dirname, '../src/store'),
+      '@components': resolve(__dirname, '../src/components'),
+      '@services': resolve(__dirname, '../src/services'),
+      '@images': resolve(__dirname, '../src/assets/images'),
+      '@views': resolve(__dirname, '../src/views'),
+      '@icons': resolve(__dirname, '../src/assets/icons'),
+      '@styles': resolve(__dirname, '../src/styles'),
+      '@typings': resolve(__dirname, '../src/typings')
     }
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'public/index.html',
-      inject: true
-    }),
     new CleanWebpackPlugin()
   ],
   performance: { // 性能提示，可以提示过大文件

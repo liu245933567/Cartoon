@@ -1,0 +1,66 @@
+.Loading-Component-Wrapper {
+  $loadingWidth: 2.666667rem /* 200/75 */;
+  $fontSize: 0.4rem /* 30/75 */;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+  background-color: rgba(0,0,0,.3);
+  .Loading-Main {
+    width: $loadingWidth;
+    height: $loadingWidth;
+    left: 50%;
+    top: 50%;
+    margin-left: -$loadingWidth/2;
+    margin-top: -$loadingWidth/2;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border-top: 10px solid #3888fa;
+    position: relative;
+    animation: a1 2s linear infinite; //动画名为a1，在下面定义
+    //设置圆角再设置边框就会有弧线的效果
+  }
+  .Loading-Main:before,
+  .Loading-Main:after {
+    content: "";
+    width: $loadingWidth;
+    height: $loadingWidth;
+    position: absolute;
+    left: 0;
+    top: -10px; //反复调节得到的数值
+    box-sizing: border-box;
+    border-radius: 50%;
+    //在盒子的左边加两个伪类元素
+  }
+  .Loading-Main:before {
+    border-top: 10px solid #e67e22;
+    transform: rotate(120deg); //让其中一个伪类元素旋转至右边
+  }
+  .Loading-Main:after {
+    border-top: 10px solid #ff005a;
+    transform: rotate(240deg); //旋转至左边
+  }
+  .Loading-Main span {
+    position: absolute;
+    width: $loadingWidth;
+    height: $loadingWidth;
+    color: #fff;
+    font-size: $fontSize;
+    text-align: center;
+    line-height: $loadingWidth;
+    animation: a2 2s linear infinite;
+    //给文字也定义一个动画
+  }
+  //让盒子旋转起来
+  @keyframes a1 {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  //让文字反方向旋转，实现文字不动的效果
+  @keyframes a2 {
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+}

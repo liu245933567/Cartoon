@@ -12,6 +12,7 @@ const devConfig = {
     host: '0.0.0.0',
     port: 8200,
     historyApiFallback: true,
+    disableHostCheck: true,
     overlay: {//当出现编译器错误或警告时，就在网页上显示一层黑色的背景层和错误信息
       errors: true
     },
@@ -59,7 +60,7 @@ const devConfig = {
       },
       {
         test: /\.css$/, // 正则匹配文件路径
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
         use: [
           // 注意loader生效是从下往上的
           'style-loader',
@@ -69,7 +70,7 @@ const devConfig = {
       {
         // for ant design
         test: /\.less$/,
-        include: path.resolve('../node_modules'),
+        include: path.resolve(__dirname, '../node_modules'),
         use: [
           'style-loader',
           'css-loader',

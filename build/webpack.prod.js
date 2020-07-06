@@ -6,6 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack');
 const cssProcessor = require('cssnano');
 
@@ -38,11 +40,11 @@ const prodConfig = {
           }
         },
         sourceMap: true
-      }),
-      // 告诉 Webpack 使用了哪些动态链接库
-      new webpack.DllReferencePlugin({
-        manifest: path.join(__dirname, '../dll/vendor.manifest.json')
       })
+      // 告诉 Webpack 使用了哪些动态链接库
+      // new webpack.DllReferencePlugin({
+      //   manifest: path.join(__dirname, '../dll/vendor.manifest.json')
+      // })
     ],
     splitChunks: {
       chunks: 'async', // 提取的 chunk 类型，all: 所有，async: 异步，initial: 初始
@@ -76,6 +78,7 @@ const prodConfig = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'public/index.html',
+      favicon: path.resolve(__dirname, '../src/assets/favicon.ico'),
       inject: true,
       minify: {
         removeComments: true, // 去掉注释
@@ -94,13 +97,30 @@ const prodConfig = {
     new ScriptExtHtmlWebpackPlugin({
       //`runtime` must same as runtimeChunk name. default is `runtime`
       inline: /runtime\..*\.js$/
+    }),
+    new CompressionWebpackPlugin({
+      filename: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: new RegExp('\\.(js|css)$'),
+      threshold: 10240,
+      minRatio: 0.8
+    }),
+    new webpack.BannerPlugin('当年明月在，曾照彩云归'),
+    // new CopyWebpackPlugin([{
+    //   from: path.resolve(__dirname, '../doc'),
+    //   to: path.resolve(__dirname, '../dist')
+    // }])
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, '../doc'), to: path.resolve(__dirname, '../dist') }
+      ]
     })
   ],
   module: {
     rules: [
       {
         test: /\.css$/, // 正则匹配文件路径
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -114,7 +134,7 @@ const prodConfig = {
       {
         // for ant design
         test: /\.less$/,
-        include: path.resolve('../node_modules'),
+        include: path.resolve(__dirname, '../node_modules'),
         use: [
           {
             loader: MiniCssExtractPlugin.loader,

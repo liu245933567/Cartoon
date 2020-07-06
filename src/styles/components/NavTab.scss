@@ -1,0 +1,35 @@
+.Nav_Tab_Item {
+  width: .586667rem /* 44/75 */;
+  height: .586667rem /* 44/75 */;
+  background-size: .586667rem /* 44/75 */;
+  background-position: center;
+  background-repeat: no-repeat;
+  // 首页
+  &_home{
+    background-image: url('~@icons/nav_tab_home_icon.png');
+  }
+  &_home_active{
+    background-image: url('~@icons/nav_tab_home_active_icon.png');
+  }
+  // 动漫
+  &_cartoon{
+    background-image: url('~@icons/nav_tab_cartoon_icon.png');
+  }
+  &_cartoon_active{
+    background-image: url('~@icons/nav_tab_cartoon_active_icon.png');
+  }
+   // 视频
+   &_movie{
+    background-image: url('~@icons/nav_tab_movie_icon.png');
+  }
+  &_movie_active{
+    background-image: url('~@icons/nav_tab_movie_active_icon.png');
+  }
+   // 用户中心
+   &_user{
+    background-image: url('~@icons/nav_tab_user_icon.png');
+  }
+  &_user_active{
+    background-image: url('~@icons/nav_tab_user_active_icon.png');
+  }
+}

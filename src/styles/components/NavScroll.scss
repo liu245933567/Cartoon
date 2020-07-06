@@ -1,0 +1,27 @@
+.NavScroll_Component_wrapper {
+  padding: 0 $normalInterval;
+  height: 1rem;
+  .NavScroll_Content {
+    display: flex;
+    line-height: 1rem;
+    & > div {
+      padding: 0 $normalInterval;
+      text-align: center;
+      font-size: $normalFontSize;
+    }
+    .isActive {
+      color: $activeColor;
+      position: relative;
+      &::after {
+        width: 100%;
+        height: 2px;
+        background: $activeColor;
+        position: absolute;
+        z-index: 0;
+        content: "";
+        left: 0;
+        bottom: 0;
+      }
+    }
+  }
+}

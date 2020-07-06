@@ -1,0 +1,21 @@
+.SectionDetail-Page-Wrapper {
+  height: 100%;
+  .Scroll_Component_wrapper {
+    height: 100%;
+  }
+  .section-images-wrapper {
+    .section-image {
+      width: 100%;
+    }
+  }
+  .next-section{
+    width: .853333rem /* 64/75 */;
+    height: .853333rem /* 64/75 */;
+    position: absolute;
+    bottom: 0.5rem;
+    opacity: .5;
+    right: .2rem;
+    background-image: url('~@icons/next-icon.png');
+    background-size: .853333rem /* 64/75 */;
+  }
+}

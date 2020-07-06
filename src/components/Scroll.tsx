@@ -1,6 +1,6 @@
 import React from 'react';
 import BScroll from 'better-scroll';
-import { IScrollProps, IScrollState } from '../../typings/scroll';
+import { IScrollProps, IScrollState } from '@typings/scroll';
 
 const defProps = {
   probeType: 1,
@@ -15,6 +15,7 @@ const defProps = {
   beforeScroll: false,
   refreshDelay: 20,
   pullupDistance: 50,
+  stopPropagation: false,
   hasMore: true,
   loadingText: '努力加载中...',
   pullDownText: '下拉刷新',
@@ -53,11 +54,19 @@ class Scroll extends React.Component<IScrollProps, IScrollState> {
   }
   static defaultProps = defProps;
 
-  componentDidMount() {
+  public componentDidMount() {
     // 保证在DOM渲染完毕后初始化better-scroll
     setTimeout(() => {
       this.initScroll();
     }, 20);
+  }
+
+  public componentDidUpdate(prvProps: any) {
+    if (JSON.stringify(prvProps.data) !== JSON.stringify(this.props.data)) {
+      if (this.scroll) {
+        this.scroll.refresh();
+      }
+    }
   }
 
   /** 初始化 scroll 方法 */
@@ -70,14 +79,17 @@ class Scroll extends React.Component<IScrollProps, IScrollState> {
       pulldown,
       pullupDistance,
       pullup,
-      scrollbar
+      scrollbar,
+      stopPropagation
     } = this.props;
 
+    console.log('scrollX', scrollX);
     this.scroll = new BScroll(this.wrapper.current as HTMLDivElement, {
       probeType,
       click,
       scrollX,
       scrollY,
+      stopPropagation,
       // pc端同样能滑动
       mouseWheel: {
         speed: 20,

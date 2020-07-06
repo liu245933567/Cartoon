@@ -3,20 +3,37 @@
  * @Description: 公共页面模板组件
  * @Date: 2020-06-26 11:45:27
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-06-30 18:07:10
+ * @Last Modified time: 2020-07-04 11:21:46
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { NavBar, Icon } from 'antd-mobile';
+import { INormalPageProps } from '@typings/normalPage';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+import Loading from '@components/Loading';
+import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
+import { IGlobalReduceState } from '@redux/reducers/global';
+import { AppState } from '@redux/reducers';
 
-class NormalPage extends React.Component {
-  constructor(props:any) {
+type IProps = RouteComponentProps & INormalPageProps & IGlobalReduceState;
+class NormalPage extends React.Component<IProps> {
+  constructor(props: any) {
     super(props);
   }
+  static defaultProps = {
+    showHeader: true,
+    headerText: '烟雨阁'
+  };
 
   render() {
-    const { showHeader, showFooter, customFooter, children } = this.props;
+    const {
+      showHeader,
+      headerText,
+      showFooter,
+      customFooter,
+      children
+    } = this.props;
 
     return (
       <div className="NormalPage_Component_Wrapper">
@@ -26,16 +43,19 @@ class NormalPage extends React.Component {
             <NavBar
               mode="light"
               icon={<Icon type="left" />}
-              onLeftClick={() => console.log('onLeftClick')}
-              rightContent={[
-                <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-                <Icon key="1" type="ellipsis" />
-              ]}
+              onLeftClick={() => {
+                this.props.history.go(-1);
+              }}
+              // rightContent={[
+              //   <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
+              //   <Icon key="1" type="ellipsis" />
+              // ]}
             >
-              烟雨阁
+              {headerText}
             </NavBar>
           </header>
         }
+        <Loading isLoading={this.props.isLoading} />
         <main className="NormalPage_Content_wrapper">{children}</main>
         {showFooter && customFooter &&
           <footer className="NormalPage_Footer_wrapper">{customFooter}</footer>
@@ -45,20 +65,6 @@ class NormalPage extends React.Component {
   }
 }
 
-NormalPage.propTypes = {
-  /** 是否显示头部 */
-  showHeader: PropTypes.bool,
-  /** 自定义头部组件 */
-  customHeader: PropTypes.elementType,
-  /** 是否显示底部组件 */
-  showFooter: PropTypes.bool,
-  /** 自定义底部组件 */
-  customFooter: PropTypes.object,
-  /** 子元素 */
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
-};
-NormalPage.defaultProps = {
-  showHeader: true
-};
-
-export default NormalPage;
+export default connect((state: AppState) => state.global)(
+  withRouter(NormalPage)
+);
