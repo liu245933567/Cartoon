@@ -28,10 +28,10 @@ const UserInfo: React.FC<IProps> = ({
       <div className="brief-info-wrapper">
         <div className="info-area">
           <div className="user-name" onClick={toLogin}>
-            {userInfo?.userName || '登录/注册'}
+            {userInfo?.nickname || '登录/注册'}
           </div>
           <div className="user-personalized-signature">
-            {userInfo?.userName || '是兄弟，就来砍我！'}
+            {userInfo?.nickname || '是兄弟，就来砍我！'}
           </div>
           <div className="use-info-btn">
             <div className="user-btn-item user-btn-item-signIn">签到有奖</div>
