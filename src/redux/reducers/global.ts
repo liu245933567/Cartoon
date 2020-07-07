@@ -10,7 +10,10 @@ import { IGlobalAction } from '../actions/global';
 import { CHANGE_LOADING_STATUS } from '../constants';
 
 const initState = {
-  isLoading: false
+  /** 当前页面是否有post请求 */
+  isLoading: false,
+  /** 是否处于登陆状态 */
+  isLogin: false
 };
 
 export type IGlobalReduceState = typeof initState;

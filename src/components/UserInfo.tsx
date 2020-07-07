@@ -8,15 +8,30 @@
 
 import React from 'react';
 import userCoverImage from '@images/user-default-cover-image.png';
+import { IUserInfo } from '@typings/user';
 
-const UserInfo = () => {
+type IProps = {
+  userInfo: IUserInfo | null;
+  /** 去登录 */
+  toLogin: () => void;
+  /** 编辑头像 */
+  toEditHeaderPortrait: () => void;
+};
+
+const UserInfo: React.FC<IProps> = ({
+  userInfo,
+  toLogin,
+  toEditHeaderPortrait
+}: IProps) => {
   return (
     <div className="UserInfo-Component-Wrapper">
       <div className="brief-info-wrapper">
         <div className="info-area">
-          <div className="user-name">大象无形</div>
+          <div className="user-name" onClick={toLogin}>
+            {userInfo?.userName || '登录/注册'}
+          </div>
           <div className="user-personalized-signature">
-            见自己，见天地，见众生
+            {userInfo?.userName || '是兄弟，就来砍我！'}
           </div>
           <div className="use-info-btn">
             <div className="user-btn-item user-btn-item-signIn">签到有奖</div>
@@ -24,7 +39,10 @@ const UserInfo = () => {
           </div>
         </div>
         <div className="user-picture">
-          <img src={userCoverImage}></img>
+          <img
+            onClick={toEditHeaderPortrait}
+            src={userInfo?.headPortrait || userCoverImage}
+          ></img>
         </div>
       </div>
 

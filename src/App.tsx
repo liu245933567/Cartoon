@@ -19,21 +19,20 @@ const SectionDeatil = loadable(() =>
   import(/* webpackChunkName: "cartonDeatil" */ './views/SectionDetail')
 );
 
+/** 登录页 */
+const Login = loadable(() =>
+  import(/* webpackChunkName: "cartonDeatil" */ './views/Login')
+);
+
 class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
         <Router>
-          <Route exact path="/" component={NavigationComponent}></Route>
-          <Route
-            exact
-            path="/cartoonDeatil"
-            component={CartoonDeatil}
-          ></Route>
-          <Route
-            path="/sectionDetail"
-            component={SectionDeatil}
-          ></Route>
+          <Route exact path="/" component={NavigationComponent} />
+          <Route path="/cartoonDeatil" component={CartoonDeatil} />
+          <Route path="/sectionDetail" component={SectionDeatil} />
+          <Route path="/login" component={Login} />
         </Router>
       </Provider>
     );

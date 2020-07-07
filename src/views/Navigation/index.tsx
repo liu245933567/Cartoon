@@ -11,9 +11,8 @@ import NormalPage from '@components/NormalPage';
 import NavTab from '@components/NavTab';
 // import Home from '@views/Home';
 // import Movie from '@views/Movie';
-// import User from '@views/User';
+import User from '@views/User';
 import Cartoon from '@views/Cartoon';
-
 
 type IProps = {};
 
@@ -21,7 +20,7 @@ class Navigation extends React.Component<IProps, { curNavTab: string }> {
   constructor(props: any) {
     super(props);
     this.state = {
-      curNavTab: 'cartoon'
+      curNavTab: 'user'
     };
     this.chooseTab = this.chooseTab.bind(this);
   }
@@ -49,6 +48,16 @@ class Navigation extends React.Component<IProps, { curNavTab: string }> {
     //       return <Home />;
     //   }
     // };
+    const Content = () => {
+      switch (curNavTab) {
+        case 'cartoon':
+          return <Cartoon />;
+        case 'user':
+          return <User />;
+        default:
+          return <Cartoon />;
+      }
+    };
 
     return (
       <NormalPage
@@ -58,8 +67,8 @@ class Navigation extends React.Component<IProps, { curNavTab: string }> {
         showFooter
         showHeader={false}
       >
-        {/* <Content /> */}
-        <Cartoon />
+        <Content />
+        {/* <Cartoon /> */}
       </NormalPage>
     );
   }
