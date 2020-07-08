@@ -1,21 +1,39 @@
 import React from 'react';
 import NormalPage from '@components/NormalPage';
+import { connect } from 'react-redux';
+import { autobind } from 'core-decorators';
+import { bindActionCreators } from 'redux';
+import { IGlobalReduceState } from '@redux/reducers/global';
+import { requestLoginRegister } from '@redux/actions/user';
+import { AppState } from '@redux/reducers';
+
+type IProps = AppState &
+  IGlobalReduceState & {
+    requestLoginRegister: typeof requestLoginRegister;
+  };
 
 type IState = {
   /** 密码登录信息 */
   passwordLogin: {
-    phone: string;
+    phoneNo: string;
     password: string;
   };
 };
-class Login extends React.Component<{}, IState> {
+class Login extends React.Component<IProps, IState> {
   readonly state = {
     /** 密码登录信息 */
     passwordLogin: {
-      phone: '',
+      phoneNo: '',
       password: ''
     }
   };
+  @autobind
+  private loginRegister() {
+    const { passwordLogin } = this.state;
+
+    this.props.requestLoginRegister(passwordLogin);
+  }
+
   render() {
     const { passwordLogin } = this.state;
 
@@ -30,12 +48,12 @@ class Login extends React.Component<{}, IState> {
               <div className="form-item-left">账号</div>
               <div className="form-item-right">
                 <input
-                  value={passwordLogin.phone}
-                  placeholder='请输入手机号'
+                  value={passwordLogin.phoneNo}
+                  placeholder="请输入手机号"
                   onChange={({ target }) => {
                     this.setState({
                       passwordLogin: {
-                        phone: target.value,
+                        phoneNo: target.value,
                         password: passwordLogin.password
                       }
                     });
@@ -49,12 +67,12 @@ class Login extends React.Component<{}, IState> {
               <div className="form-item-right">
                 <input
                   value={passwordLogin.password}
-                  placeholder='请输入密码'
+                  placeholder="请输入密码"
                   type="password"
                   onChange={({ target }) => {
                     this.setState({
                       passwordLogin: {
-                        phone: passwordLogin.phone,
+                        phoneNo: passwordLogin.phoneNo,
                         password: target.value
                       }
                     });
@@ -64,8 +82,8 @@ class Login extends React.Component<{}, IState> {
             </div>
           </div>
 
-          <div className="login-btn">
-          登录 / 注册
+          <div className="login-btn" onClick={this.loginRegister}>
+            登录 / 注册
           </div>
         </div>
       </NormalPage>
@@ -73,4 +91,13 @@ class Login extends React.Component<{}, IState> {
   }
 }
 
-export default Login;
+export default connect(
+  (state: AppState) => state.global,
+  (dispatch) =>
+    bindActionCreators(
+      {
+        requestLoginRegister
+      },
+      dispatch
+    )
+)(Login);

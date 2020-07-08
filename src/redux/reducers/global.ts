@@ -7,27 +7,44 @@
  */
 
 import { IGlobalAction } from '../actions/global';
-import { CHANGE_LOADING_STATUS } from '../constants';
+import { IUserAction } from '../actions/user';
+import { IUserResInfo } from '@typings/user';
+import { CHANGE_LOADING_STATUS, REQUEST_LOGIN_REGISTER } from '../constants';
 
 const initState = {
   /** 当前页面是否有post请求 */
   isLoading: false,
   /** 是否处于登陆状态 */
-  isLogin: false
+  isLogin: false,
+  userInfo: null
 };
 
-export type IGlobalReduceState = typeof initState;
+export type IGlobalReduceState = {
+  isLoading: boolean;
+  isLogin: boolean;
+  userInfo: IUserResInfo | null;
+};
 
+/** 全局 reducer */
 const global = (
   state: IGlobalReduceState = initState,
-  action: IGlobalAction
+  action: IGlobalAction | IUserAction
 ): IGlobalReduceState => {
   switch (action.type) {
-    case CHANGE_LOADING_STATUS:
+    case CHANGE_LOADING_STATUS: {
       return {
         ...state,
         ...action.payload
       };
+    }
+    case REQUEST_LOGIN_REGISTER: {
+      return {
+        ...state,
+        isLogin: true,
+        userInfo: action.result
+      };
+    }
+
     default:
       return state;
   }
