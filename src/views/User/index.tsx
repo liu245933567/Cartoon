@@ -14,6 +14,7 @@ import { IGlobalReduceState } from '@redux/reducers/global';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { autobind } from 'core-decorators';
 
+
 type IProps = IGlobalReduceState & RouteComponentProps & {};
 class User extends React.Component<IProps> {
   /** 去登录 */
@@ -28,13 +29,13 @@ class User extends React.Component<IProps> {
     console.log(33333);
   }
   render() {
-    const { isLogin } = this.props;
+    const { isLogin, userInfo } = this.props;
 
     console.log(isLogin);
     return (
       <div className="User-Page-Wrapper">
         <UserInfo
-          userInfo={null}
+          userInfo={userInfo}
           toLogin={this.login}
           toEditHeaderPortrait={this.editHeaderPortrait}
         />

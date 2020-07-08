@@ -2,6 +2,8 @@
 export const loginURL = '/user/login.json';
 /** 登录注册接口 */
 export const loginRegisterURL = '/user/loginRegister.json';
+/** 校验登录接口 */
+export const loginStatusURL = '/user/loginStatus.json';
 
 /** 添加爬虫 */
 export const addCrawlerURL = '/admin/addCrawler.json';

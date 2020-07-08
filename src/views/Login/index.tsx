@@ -6,8 +6,9 @@ import { bindActionCreators } from 'redux';
 import { IGlobalReduceState } from '@redux/reducers/global';
 import { requestLoginRegister } from '@redux/actions/user';
 import { AppState } from '@redux/reducers';
+import { RouteComponentProps } from 'react-router-dom';
 
-type IProps = AppState &
+type IProps = AppState &RouteComponentProps&
   IGlobalReduceState & {
     requestLoginRegister: typeof requestLoginRegister;
   };
@@ -31,7 +32,9 @@ class Login extends React.Component<IProps, IState> {
   private loginRegister() {
     const { passwordLogin } = this.state;
 
-    this.props.requestLoginRegister(passwordLogin);
+    this.props.requestLoginRegister(passwordLogin, () => {
+      this.props.history.goBack();
+    });
   }
 
   render() {

@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
 import store from '@redux/store';
+import {requestLoginStatus} from '@redux/actions/user';
 
 /** 导航页 */
 const NavigationComponent = loadable(() =>
@@ -25,6 +26,9 @@ const Login = loadable(() =>
 );
 
 class App extends React.Component {
+  public componentDidMount() {
+    requestLoginStatus()(store.dispatch);
+  }
   render() {
     return (
       <Provider store={store}>

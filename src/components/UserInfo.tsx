@@ -8,10 +8,10 @@
 
 import React from 'react';
 import userCoverImage from '@images/user-default-cover-image.png';
-import { IUserInfo } from '@typings/user';
+import { IUserResInfo } from '@typings/user';
 
 type IProps = {
-  userInfo: IUserInfo | null;
+  userInfo: IUserResInfo | null;
   /** 去登录 */
   toLogin: () => void;
   /** 编辑头像 */
@@ -31,7 +31,7 @@ const UserInfo: React.FC<IProps> = ({
             {userInfo?.nickname || '登录/注册'}
           </div>
           <div className="user-personalized-signature">
-            {userInfo?.nickname || '是兄弟，就来砍我！'}
+            {userInfo?.motto || '是兄弟，就来砍我！'}
           </div>
           <div className="use-info-btn">
             <div className="user-btn-item user-btn-item-signIn">签到有奖</div>
