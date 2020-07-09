@@ -3,7 +3,7 @@
  * @Description: 用户首页
  * @Date: 2020-07-03 16:03:36
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-09 11:38:15
+ * @Last Modified time: 2020-07-09 12:17:59
  */
 
 import React from 'react';
@@ -26,8 +26,13 @@ class User extends React.Component<IProps> {
       pathname: '/login'
     });
   }
+  /** 去头像编辑页 */
+  @autobind
   public editHeaderPortrait() {
     console.log(33333);
+    this.props.history.push({
+      pathname: '/imageUploader'
+    });
   }
   render() {
     const { isLogin, userInfo } = this.props;

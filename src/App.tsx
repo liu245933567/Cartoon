@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
 import store from '@redux/store';
-import {requestLoginStatus} from '@redux/actions/user';
+import { requestLoginStatus } from '@redux/actions/user';
 
 /** 导航页 */
 // const NavigationComponent = loadable(() =>
@@ -35,6 +35,11 @@ const Login = loadable(() =>
   import(/* webpackChunkName: "cartonDeatil" */ './views/Login')
 );
 
+/** 头像上传 */
+const ImageUploader = loadable(() =>
+  import(/* webpackChunkName: "cartonDeatil" */ './views/ImageUploader')
+);
+
 class App extends React.Component {
   public componentDidMount() {
     requestLoginStatus()(store.dispatch);
@@ -45,6 +50,7 @@ class App extends React.Component {
         <Router>
           <Route path="/" exact component={Cartoon} />
           <Route path="/user" component={User} />
+          <Route path="/imageUploader" component={ImageUploader} />
           <Route path="/cartoonDeatil" component={CartoonDeatil} />
           <Route path="/sectionDetail" component={SectionDeatil} />
           <Route path="/login" component={Login} />
