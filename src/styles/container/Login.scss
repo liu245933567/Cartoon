@@ -48,5 +48,9 @@
     text-align: center;
     font-size: .46rem;
     margin-top: .5rem;
+    &-canclick{
+      background-color: $activeColor;
+      color: #fff;
+    }
   }
 }

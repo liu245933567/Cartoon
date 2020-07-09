@@ -7,8 +7,10 @@ import { IGlobalReduceState } from '@redux/reducers/global';
 import { requestLoginRegister } from '@redux/actions/user';
 import { AppState } from '@redux/reducers';
 import { RouteComponentProps } from 'react-router-dom';
+import classnames from 'classnames';
 
-type IProps = AppState &RouteComponentProps&
+type IProps = AppState &
+  RouteComponentProps &
   IGlobalReduceState & {
     requestLoginRegister: typeof requestLoginRegister;
   };
@@ -85,7 +87,13 @@ class Login extends React.Component<IProps, IState> {
             </div>
           </div>
 
-          <div className="login-btn" onClick={this.loginRegister}>
+          <div
+            className={classnames('login-btn', {
+              'login-btn-canclick':
+                passwordLogin.password && passwordLogin.phoneNo
+            })}
+            onClick={this.loginRegister}
+          >
             登录 / 注册
           </div>
         </div>
