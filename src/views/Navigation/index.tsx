@@ -3,7 +3,7 @@
  * @Description: 首页导航页
  * @Date: 2020-07-01 14:27:14
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-04 22:48:40
+ * @Last Modified time: 2020-07-09 11:12:17
  */
 
 import * as React from 'react';
@@ -23,6 +23,10 @@ class Navigation extends React.Component<IProps, { curNavTab: string }> {
       curNavTab: 'user'
     };
     this.chooseTab = this.chooseTab.bind(this);
+  }
+
+  componentDidMount() {
+    console.log(11111111111);
   }
 
   /** 切换tab */

@@ -6,8 +6,18 @@ import store from '@redux/store';
 import {requestLoginStatus} from '@redux/actions/user';
 
 /** 导航页 */
-const NavigationComponent = loadable(() =>
-  import(/* webpackChunkName: "navigation" */ './views/Navigation')
+// const NavigationComponent = loadable(() =>
+//   import(/* webpackChunkName: "navigation" */ './views/Navigation')
+// );
+
+/** 动漫首页 */
+const Cartoon = loadable(() =>
+  import(/* webpackChunkName: "navigation" */ './views/Cartoon')
+);
+
+/** 用户页 */
+const User = loadable(() =>
+  import(/* webpackChunkName: "cartonDeatil" */ './views/User')
 );
 
 /** 动漫详情页 */
@@ -33,7 +43,8 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <Router>
-          <Route exact path="/" component={NavigationComponent} />
+          <Route path="/" exact component={Cartoon} />
+          <Route path="/user" component={User} />
           <Route path="/cartoonDeatil" component={CartoonDeatil} />
           <Route path="/sectionDetail" component={SectionDeatil} />
           <Route path="/login" component={Login} />

@@ -3,17 +3,18 @@
  * @Description: 用户首页
  * @Date: 2020-07-03 16:03:36
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-03 16:33:18
+ * @Last Modified time: 2020-07-09 11:38:15
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '@redux/reducers';
 import UserInfo from '@components/UserInfo';
+import NormalPage from '@components/NormalPage';
+import NavTab from '@components/NavTab';
 import { IGlobalReduceState } from '@redux/reducers/global';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { autobind } from 'core-decorators';
-
 
 type IProps = IGlobalReduceState & RouteComponentProps & {};
 class User extends React.Component<IProps> {
@@ -33,13 +34,15 @@ class User extends React.Component<IProps> {
 
     console.log(isLogin);
     return (
-      <div className="User-Page-Wrapper">
-        <UserInfo
-          userInfo={userInfo}
-          toLogin={this.login}
-          toEditHeaderPortrait={this.editHeaderPortrait}
-        />
-      </div>
+      <NormalPage showHeader={false} customFooter={<NavTab />} showFooter>
+        <div className="User-Page-Wrapper">
+          <UserInfo
+            userInfo={userInfo}
+            toLogin={this.login}
+            toEditHeaderPortrait={this.editHeaderPortrait}
+          />
+        </div>
+      </NormalPage>
     );
   }
 }
