@@ -1,6 +1,7 @@
 import { post } from './axios';
-import { loginRegisterURL, loginStatusURL } from './url';
+import { loginRegisterURL, loginStatusURL, uploaderURL } from './url';
 import { IUserResInfo, ILoginParam } from '@typings/user';
+import { IUploadResult } from '@typings/upload';
 
 /** 注册登录 */
 export function loginRegister(params: ILoginParam) {
@@ -10,4 +11,15 @@ export function loginRegister(params: ILoginParam) {
 /** 校验登录 */
 export function loginStatus() {
   return post<undefined, IUserResInfo | null>(loginStatusURL);
+}
+
+/** 上传接口 */
+export function uploader(
+  param: FormData,
+  onUploadProgress?: (progressEvent: any) => void
+) {
+  return post<FormData, IUploadResult | null>(uploaderURL, param, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+    onUploadProgress
+  });
 }

@@ -5,6 +5,9 @@ export const loginRegisterURL = '/user/loginRegister.json';
 /** 校验登录接口 */
 export const loginStatusURL = '/user/loginStatus.json';
 
+/** 上传文件接口 */
+export const uploaderURL = '/user/uploader.json';
+
 /** 添加爬虫 */
 export const addCrawlerURL = '/admin/addCrawler.json';
 /** 爬虫列表 */

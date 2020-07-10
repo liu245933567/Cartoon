@@ -47,8 +47,8 @@ function get(url: string) {
 }
 
 /** Axios post请求 */
-function post<ReqT, ResT>(url: string, data?: ReqT) {
-  return axios.post<ResponseData<ResT>>(url, data);
+function post<ReqT, ResT>(url: string, data?: ReqT, config?: AxiosRequestConfig) {
+  return axios.post<ResponseData<ResT>>(url, data, config);
 }
 
 export { axios, get, post };
