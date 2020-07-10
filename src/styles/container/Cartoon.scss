@@ -1,5 +1,21 @@
 .Cartoon-Page-Wrapper {
   height: 100%;
+  .catrgorys-wrapper {
+    padding-top: 0.3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .catrgory-item {
+      height: 0.8rem;
+      line-height: 0.8rem;
+      padding: 0 0.3rem;
+      background-color: #b2b7c6;
+      color: #fff;
+      margin-right: 0.2rem;
+      border-radius: 0.4rem;
+      margin-bottom: 0.3rem;
+    }
+  }
   .Slider-Item {
     display: flex;
     justify-content: space-between;

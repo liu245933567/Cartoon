@@ -3,7 +3,7 @@
  * @Description: 漫画首页
  * @Date: 2020-07-01 16:34:39
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-09 11:35:10
+ * @Last Modified time: 2020-07-09 21:11:57
  */
 
 import React from 'react';
@@ -78,7 +78,8 @@ class Cartoon extends React.Component<IProps> {
       hotCartoonRecommends,
       latestRecommends,
       otherRecommendList,
-      searchResultList
+      searchResultList,
+      categorys
     } = this.props;
     const { searchStr } = this.state;
 
@@ -89,10 +90,6 @@ class Cartoon extends React.Component<IProps> {
             value={searchStr}
             ref={this.serachBarRef}
             placeholder="请输入动漫名称查询"
-            onSubmit={(value) => console.log(value, 'onSubmit')}
-            onClear={(value) => console.log(value, 'onClear')}
-            onFocus={() => console.log('onFocus')}
-            onBlur={() => console.log('onBlur')}
             cancelText="搜索"
             onCancel={this.serachCartoon}
             onChange={(value) => {
@@ -103,6 +100,13 @@ class Cartoon extends React.Component<IProps> {
           />
           {!this.showSeach ?
             <Scroll>
+              <div className="catrgorys-wrapper">
+                {categorys.map((category) =>
+                  <div key={category.categoryKey} className="catrgory-item">
+                    {category.category}
+                  </div>
+                )}
+              </div>
               <div className="bbbbbbb">
                 <Scroll scrollX scrollY={false} stopPropagation>
                   <div className="aaaaaaa">

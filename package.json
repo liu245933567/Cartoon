@@ -29,6 +29,7 @@
     "classnames": "^2.2.6",
     "core-decorators": "^0.20.0",
     "crypto-js": "^4.0.0",
+    "exif-js": "^2.3.0",
     "lodash-es": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
