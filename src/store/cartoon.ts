@@ -31,6 +31,23 @@ console.log(cartoonInfos);
 }
 
 /**
+ * 初始化本地历史记录
+ * @param cartoonHistorys 后台返回的历史记录信息
+ */
+export function initCartoonHistory(cartoonHistorys: ICartoonHistory[]) {
+  const historyData = cartoonHistorys.reduce((resultObj, curHistory) => {
+    const {detailHref} = curHistory;
+
+    return {
+      ...resultObj,
+      [detailHref]: curHistory
+    };
+  }, {});
+
+  store.set(CARTOON_HITORY, historyData);
+}
+
+/**
  * 设置动漫历史记录
  * @param cartoonInfo 看过的动漫信息
  * @param sectionInfo 看过的章节信息

@@ -21,6 +21,8 @@ export const cartoonDetailURL = '/cartoon/cartoonDetail.json';
 export const sectionDetailURL = '/cartoon/sectionDetail.json';
 /** 动漫查询 */
 export const searchCartoonlURL = '/cartoon/cartoonSearch.json';
+/** 动漫观看历史 */
+export const cartoonHistoryURL = '/cartoon/cartoonHistory.json';
 
 /** 视频列表 */
 export const videoListURL = '/video/videoList.json';

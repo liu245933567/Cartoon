@@ -3,7 +3,8 @@ import {
   cartoonHomeInfoURL,
   cartoonDetailURL,
   sectionDetailURL,
-  searchCartoonlURL
+  searchCartoonlURL,
+  cartoonHistoryURL
 } from './url';
 import {
   ICartoonHomeRes,
@@ -13,7 +14,8 @@ import {
   ISectionDeatilInfoReq,
   ISearchCartonReq,
   // ISearchPageInfo,
-  CartoonOtherRecommendInfo
+  CartoonOtherRecommendInfo,
+  ICartoonHistory
 } from '@typings/cartoon';
 
 /** 获取动漫首页信息 */
@@ -34,4 +36,9 @@ export function sectionDeatilInfo(params: ISectionDeatilInfoReq) {
 /** 查询动漫 */
 export function searchCartoon(params: ISearchCartonReq) {
   return post<ISearchCartonReq, CartoonOtherRecommendInfo[]>(searchCartoonlURL, params);
+}
+
+/** 查询动漫观看历史 */
+export function cartoonHistory() {
+  return post<null, ICartoonHistory[] | null>(cartoonHistoryURL);
 }

@@ -4,6 +4,8 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
 import store from '@redux/store';
 import { requestLoginStatus } from '@redux/actions/user';
+import { cartoonHistory } from '@services/cartoon';
+import {initCartoonHistory} from '@store/cartoon';
 
 /** 导航页 */
 // const NavigationComponent = loadable(() =>
@@ -28,6 +30,14 @@ const ImageUploader = loadable(() => import('./views/ImageUploader'));
 class App extends React.Component {
   public componentDidMount() {
     requestLoginStatus()(store.dispatch);
+    this.getHistory();
+  }
+  private async getHistory() {
+    const { data } = await cartoonHistory();
+
+    if (data.isOk && data.result) {
+      initCartoonHistory(data.result);
+    }
   }
   render() {
     return (
