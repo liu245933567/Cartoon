@@ -2,16 +2,22 @@ import React from 'react';
 import CartoonCover from '@components/CartoonCover';
 import {
   CartoonRecommendInfo,
-  CartoonOtherRecommendInfo
+  CartoonOtherRecommendInfo,
+  ICartoonHistory
 } from '@typings/cartoon';
 
 interface Iprops {
   /** 动漫列表 */
-  cartoonList: CartoonRecommendInfo[] | CartoonOtherRecommendInfo[];
+  cartoonList:
+    | CartoonRecommendInfo[]
+    | CartoonOtherRecommendInfo[]
+    | ICartoonHistory[];
   /** 标题 */
   title?: string;
   /** 动漫点击回调 */
-  clickHandle: (cartoonInfo: CartoonOtherRecommendInfo | CartoonRecommendInfo) => void;
+  clickHandle: (
+    cartoonInfo: CartoonOtherRecommendInfo | CartoonRecommendInfo | ICartoonHistory
+  ) => void;
 }
 
 const CartoonNormalList: React.FC<Iprops> = ({

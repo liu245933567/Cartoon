@@ -7,11 +7,11 @@
  */
 
 import React from 'react';
-import { CartoonOtherRecommendInfo } from '@typings/cartoon';
+import { CartoonOtherRecommendInfo, ICartoonHistory } from '@typings/cartoon';
 
 interface IProps {
   /** 动漫信息 */
-  cartoonInfo: CartoonOtherRecommendInfo;
+  cartoonInfo: CartoonOtherRecommendInfo | ICartoonHistory;
   /** 点击回调 */
   clickHandle: (cartoonInfo: CartoonOtherRecommendInfo) => void;
 }
@@ -24,7 +24,6 @@ const CartoonCover: React.FC<IProps> = ({
     <div
       className="CartoonCover-Component-Wrapper"
       onClick={() => {
-        console.log('击此');
         clickHandle(cartoonInfo);
       }}
     >

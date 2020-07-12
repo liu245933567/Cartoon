@@ -1239,10 +1239,22 @@
   resolved "https://registry.yarnpkg.com/@types/better-scroll/-/better-scroll-1.12.2.tgz#622136087cd0bcbd7eaea93812cd64fe4d15849d"
   integrity sha512-Nmzw36KPBW4VkvP9hLBCFW5xCP2E1oMcfJkCxSn1Oy+sLlGPT3PWwg+GzsG110vK78v5IoT5amvck+mQjGyuIw==
 
+"@types/classnames@^2.2.10":
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.10.tgz#cc658ca319b6355399efc1f5b9e818f1a24bf999"
+  integrity sha512-1UzDldn9GfYYEsWWnn/P4wkTlkZDH7lDb0wBMGbtIQc9zXEQq7FlKBdZUn6OBqD8sKZZ2RQO2mAjGpXiDGoRmQ==
+
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
+
+"@types/core-decorators@^0.20.0":
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/@types/core-decorators/-/core-decorators-0.20.0.tgz#831fa2a8bb3cefcba8be0ca7e3e1d5c6226f09c2"
+  integrity sha512-hiSzDrfKy6dMYZWplTELCEIb2ZeaDm2acO2dVYjpK/+nh5Y+6t/Z5crIyZi5YaZ01f3Hoy7WCdsU9B22dwbMow==
+  dependencies:
+    core-decorators "*"
 
 "@types/crypto-js@^3.1.47":
   version "3.1.47"
@@ -3144,7 +3156,7 @@ copy-webpack-plugin@^6.0.3:
     serialize-javascript "^4.0.0"
     webpack-sources "^1.4.3"
 
-core-decorators@^0.20.0:
+core-decorators@*, core-decorators@^0.20.0:
   version "0.20.0"
   resolved "https://registry.yarnpkg.com/core-decorators/-/core-decorators-0.20.0.tgz#605896624053af8c28efbe735c25a301a61c65c5"
   integrity sha1-YFiWYkBTr4wo775zXCWjAaYcZcU=
@@ -4216,6 +4228,11 @@ exenv@^1.2.0:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
   integrity sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
+
+exif-js@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/exif-js/-/exif-js-2.3.0.tgz#9d10819bf571f873813e7640241255ab9ce1a814"
+  integrity sha1-nRCBm/Vx+HOBPnZAJBJVq5zhqBQ=
 
 expand-brackets@^2.1.4:
   version "2.1.4"
@@ -6102,6 +6119,11 @@ lodash._reinterpolate@^3.0.0:
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
 
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
+
 lodash.ismatch@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.ismatch/-/lodash.ismatch-4.4.0.tgz#756cb5150ca3ba6f11085a78849645f188f85f37"
@@ -6136,6 +6158,11 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
+
+lodash.uniqueid@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/lodash.uniqueid/-/lodash.uniqueid-4.0.1.tgz#3268f26a7c88e4f4b1758d679271814e31fa5b26"
+  integrity sha1-MmjyanyI5PSxdY1nknGBTjH6WyY=
 
 lodash@4.17.15, lodash@^4.0.0, lodash@^4.15.0, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.5, lodash@~4.17.10:
   version "4.17.15"
@@ -8357,6 +8384,14 @@ react-native-swipeout@^2.2.2:
     create-react-class "^15.6.0"
     prop-types "^15.5.10"
     react-tween-state "^0.1.5"
+
+react-photo-view@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/react-photo-view/-/react-photo-view-0.5.1.tgz#181eb1a3e03e9481d8e7cce734170a49f80e0543"
+  integrity sha512-uWyNgicvpEz1Ppqmukx7bJAzEZkYtmdQUK1Ne+w0IVlRYQ9FWAPgya1tLgBAXKub2mqRi5CUI1ALkPbtYkF84g==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    lodash.uniqueid "^4.0.1"
 
 react-redux@^7.2.0:
   version "7.2.0"

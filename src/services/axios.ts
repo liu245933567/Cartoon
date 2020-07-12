@@ -1,8 +1,13 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { HOST, WITHCREDENTIALS } from '@config/index';
 import { ResponseData } from '@typings/api';
 import store from '@redux/store';
+import { createHashHistory } from 'history'; // hash路由
 import { changeLoading } from '@redux/actions/global';
+import { Modal } from 'antd-mobile';
+import { needLogin } from './util';
+
+const history = createHashHistory();
 
 axios.defaults.baseURL = HOST;
 axios.defaults.withCredentials = WITHCREDENTIALS;
@@ -21,10 +26,28 @@ axios.interceptors.request.use(
   }
 );
 
-/** response之后的处理 */
+/** response之后的处理 AxiosRequestConfig<ResponseData<ResT>> */
 axios.interceptors.response.use(
-  (response) => {
+  (response: AxiosResponse<ResponseData>) => {
     store.dispatch(changeLoading({ isLoading: false }));
+    const { data } = response;
+
+    if (
+      !data.isOk &&
+      data.code === 'REQUIER_LOGIN' &&
+      needLogin(response.config.url || '')
+    ) {
+      Modal.alert('未登录', '大哥，给否给个面子去登录一下？', [
+        {
+          text: '不给',
+          onPress: () => console.log('cancel'),
+          style: 'default'
+        },
+        { text: '没毛病！', onPress: () => {
+          history.push({pathname: '/login'});
+        } }
+      ]);
+    }
     return response;
   },
   (err) => {
@@ -47,8 +70,12 @@ function get(url: string) {
 }
 
 /** Axios post请求 */
-function post<ReqT, ResT>(url: string, data?: ReqT) {
-  return axios.post<ResponseData<ResT>>(url, data);
+function post<ReqT, ResT>(
+  url: string,
+  data?: ReqT,
+  config?: AxiosRequestConfig
+) {
+  return axios.post<ResponseData<ResT>>(url, data, config);
 }
 
 export { axios, get, post };

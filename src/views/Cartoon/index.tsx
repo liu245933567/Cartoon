@@ -3,7 +3,7 @@
  * @Description: 漫画首页
  * @Date: 2020-07-01 16:34:39
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-05 13:13:07
+ * @Last Modified time: 2020-07-09 21:11:57
  */
 
 import React from 'react';
@@ -11,6 +11,8 @@ import { CartoonOtherRecommendInfo } from '@typings/cartoon';
 import CartoonNormalList from '@components/CartoonNormalList';
 import Scroll from '@components/Scroll';
 import CartoonCover from '@components/CartoonCover';
+import NormalPage from '@components/NormalPage';
+import NavTab from '@components/NavTab';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { autobind } from 'core-decorators';
 import { connect } from 'react-redux';
@@ -63,7 +65,6 @@ class Cartoon extends React.Component<IProps> {
     this.props.requestCartoonDeatilInfo(
       { cartoonPath: cartoonInfo.detailHref },
       () => {
-        console.log('触发');
         this.props.history.push({
           pathname: 'cartoonDeatil'
         });
@@ -76,71 +77,77 @@ class Cartoon extends React.Component<IProps> {
       hotCartoonRecommends,
       latestRecommends,
       otherRecommendList,
-      searchResultList
+      searchResultList,
+      categorys
     } = this.props;
     const { searchStr } = this.state;
 
     return (
-      <div className="Cartoon-Page-Wrapper">
-        <SearchBar
-          value={searchStr}
-          ref={this.serachBarRef}
-          placeholder="请输入动漫名称查询"
-          onSubmit={(value) => console.log(value, 'onSubmit')}
-          onClear={(value) => console.log(value, 'onClear')}
-          onFocus={() => console.log('onFocus')}
-          onBlur={() => console.log('onBlur')}
-          cancelText="搜索"
-          onCancel={this.serachCartoon}
-          onChange={(value) => {
-            this.setState({
-              searchStr: value
-            });
-          }}
-        />
-        {!this.showSeach ?
-          <Scroll>
-            <div className="bbbbbbb">
-              <Scroll scrollX scrollY={false} stopPropagation>
-                <div className="aaaaaaa">
-                  {hotCartoonRecommends.length &&
-                    hotCartoonRecommends.map((cartoonInfo) => {
-                      return (
-                        <CartoonCover
-                          key={cartoonInfo.detailHref}
-                          cartoonInfo={cartoonInfo}
-                          clickHandle={this.toCheckDetail}
-                        />
-                      );
-                    })}
-                </div>
-              </Scroll>
+      <NormalPage showHeader={false} customFooter={<NavTab />} showFooter>
+        <div className="Cartoon-Page-Wrapper">
+          <SearchBar
+            value={searchStr}
+            ref={this.serachBarRef}
+            placeholder="请输入动漫名称查询"
+            cancelText="搜索"
+            onCancel={this.serachCartoon}
+            onChange={(value) => {
+              this.setState({
+                searchStr: value
+              });
+            }}
+          />
+          {!this.showSeach ?
+            <Scroll>
+              <div className="catrgorys-wrapper">
+                {categorys.map((category) =>
+                  <div key={category.categoryKey} className="catrgory-item">
+                    {category.category}
+                  </div>
+                )}
+              </div>
+              <div className="bbbbbbb">
+                <Scroll scrollX scrollY={false} stopPropagation>
+                  <div className="aaaaaaa">
+                    {hotCartoonRecommends.length &&
+                      hotCartoonRecommends.map((cartoonInfo) => {
+                        return (
+                          <CartoonCover
+                            key={cartoonInfo.detailHref}
+                            cartoonInfo={cartoonInfo}
+                            clickHandle={this.toCheckDetail}
+                          />
+                        );
+                      })}
+                  </div>
+                </Scroll>
+              </div>
+              <div></div>
+              <CartoonNormalList
+                title="最近更新"
+                cartoonList={latestRecommends}
+                clickHandle={this.toCheckDetail}
+              />
+              {otherRecommendList.map((otherRecommend) => {
+                return (
+                  <CartoonNormalList
+                    key={otherRecommend.recommend.title}
+                    title={otherRecommend.recommend.title}
+                    cartoonList={otherRecommend.recommend.recommendList}
+                    clickHandle={this.toCheckDetail}
+                  />
+                );
+              })}
+            </Scroll> :
+            <div className="search-popup">
+              <CartoonNormalList
+                cartoonList={searchResultList}
+                clickHandle={this.toCheckDetail}
+              />
             </div>
-            <div></div>
-            <CartoonNormalList
-              title="最近更新"
-              cartoonList={latestRecommends}
-              clickHandle={this.toCheckDetail}
-            />
-            {otherRecommendList.map((otherRecommend) => {
-              return (
-                <CartoonNormalList
-                  key={otherRecommend.recommend.title}
-                  title={otherRecommend.recommend.title}
-                  cartoonList={otherRecommend.recommend.recommendList}
-                  clickHandle={this.toCheckDetail}
-                />
-              );
-            })}
-          </Scroll> :
-          <div className="search-popup">
-            <CartoonNormalList
-              cartoonList={searchResultList}
-              clickHandle={this.toCheckDetail}
-            />
-          </div>
-        }
-      </div>
+          }
+        </div>
+      </NormalPage>
     );
   }
 }

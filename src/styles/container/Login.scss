@@ -1,0 +1,56 @@
+.Login-Page-Wrapper {
+  padding: 0.4rem /* 30/75 */;
+  height: 100%;
+  background: #fff;
+  .login-type-title {
+    color: #333333;
+    font-size: 0.5rem;
+    font-weight: bold;
+  }
+  .login-form {
+    .form-item {
+      display: flex;
+      padding: .533333rem /* 40/75 */ 0;
+      border-bottom: 1px solid #e4e9ea;
+      .form-item-left {
+        border-right: 2px solid #e4e9ea;
+        margin-right: 0.133333rem /* 10/75 */;
+        padding: 0 0.266667rem /* 20/75 */;
+        height: 0.666667rem /* 50/75 */;
+        line-height: 0.666667rem /* 50/75 */;
+        font-size: .4rem;
+        color: #333333;
+      }
+      .form-item-right {
+        height: 0.666667rem /* 50/75 */;
+        line-height: 0.666667rem /* 50/75 */;
+        input {
+          height: 0.666667rem /* 50/75 */;
+          line-height: 0.666667rem /* 50/75 */;
+          border: none;
+          box-sizing: border-box;
+          padding-left: .5rem;
+          &::placeholder{
+            color: #c9cccc;
+          }
+        }
+      }
+    }
+  }
+  .login-btn{
+    width: 6rem;
+    height: 1rem;
+    line-height: 1rem;
+    border-radius: .5rem;
+    margin: auto;
+    background: #d6d9d8;
+    color: #fff;
+    text-align: center;
+    font-size: .46rem;
+    margin-top: .5rem;
+    &-canclick{
+      background-color: $activeColor;
+      color: #fff;
+    }
+  }
+}
