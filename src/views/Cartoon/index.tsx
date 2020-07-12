@@ -65,7 +65,6 @@ class Cartoon extends React.Component<IProps> {
     this.props.requestCartoonDeatilInfo(
       { cartoonPath: cartoonInfo.detailHref },
       () => {
-        console.log('触发');
         this.props.history.push({
           pathname: 'cartoonDeatil'
         });

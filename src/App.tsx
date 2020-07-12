@@ -11,34 +11,19 @@ import { requestLoginStatus } from '@redux/actions/user';
 // );
 
 /** 动漫首页 */
-const Cartoon = loadable(() =>
-  import(/* webpackChunkName: "navigation" */ './views/Cartoon')
-);
-
+const Cartoon = loadable(() => import('./views/Cartoon'));
 /** 用户页 */
-const User = loadable(() =>
-  import(/* webpackChunkName: "cartonDeatil" */ './views/User')
-);
-
+const User = loadable(() => import('./views/User'));
+/** 及历史录 */
+const History = loadable(() => import('./views/History'));
 /** 动漫详情页 */
-const CartoonDeatil = loadable(() =>
-  import(/* webpackChunkName: "cartonDeatil" */ './views/CartoonDetail')
-);
-
+const CartoonDeatil = loadable(() => import('./views/CartoonDetail'));
 /** 章节详情页 */
-const SectionDeatil = loadable(() =>
-  import(/* webpackChunkName: "cartonDeatil" */ './views/SectionDetail')
-);
-
+const SectionDeatil = loadable(() => import('./views/SectionDetail'));
 /** 登录页 */
-const Login = loadable(() =>
-  import(/* webpackChunkName: "cartonDeatil" */ './views/Login')
-);
-
+const Login = loadable(() => import('./views/Login'));
 /** 头像上传 */
-const ImageUploader = loadable(() =>
-  import(/* webpackChunkName: "cartonDeatil" */ './views/ImageUploader')
-);
+const ImageUploader = loadable(() => import('./views/ImageUploader'));
 
 class App extends React.Component {
   public componentDidMount() {
@@ -50,6 +35,7 @@ class App extends React.Component {
         <Router>
           <Route path="/" exact component={Cartoon} />
           <Route path="/user" component={User} />
+          <Route path="/history" component={History} />
           <Route path="/imageUploader" component={ImageUploader} />
           <Route path="/cartoonDeatil" component={CartoonDeatil} />
           <Route path="/sectionDetail" component={SectionDeatil} />

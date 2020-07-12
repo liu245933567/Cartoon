@@ -1,4 +1,22 @@
-.User-Page-Wrapper{
+.User-Page-Wrapper {
   height: 100%;
   background: #fff;
+  .gird-item {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center 0.4rem;
+    background-size: 1rem;
+    position: relative;
+    &-history {
+      background-image: url("~@icons/history-iconpng.png");
+    }
+    .gird-text {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      line-height: 1.4rem;
+      color: #999;
+    }
+  }
 }

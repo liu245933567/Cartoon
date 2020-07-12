@@ -4,6 +4,9 @@
     display: flex;
     .info-area {
       flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       .user-name {
         font-size: 0.48rem /* 36/75 */;
         color: #292929;
@@ -56,15 +59,15 @@
       margin-top: $normalInterval;
       box-shadow: 0px 0px 8px 0px #efebeb;
       .user-tab-text {
-        font-size: .24rem /* 18/75 */;
-        height: .493333rem /* 37/75 */;
-        line-height: .493333rem /* 37/75 */;
+        font-size: 0.24rem /* 18/75 */;
+        height: 0.493333rem /* 37/75 */;
+        line-height: 0.493333rem /* 37/75 */;
         text-align: center;
       }
       .user-tab-name {
-        font-size: .213333rem /* 16/75 */;
-        height: .493333rem /* 37/75 */;
-        line-height: .493333rem /* 37/75 */;
+        font-size: 0.213333rem /* 16/75 */;
+        height: 0.493333rem /* 37/75 */;
+        line-height: 0.493333rem /* 37/75 */;
         text-align: center;
       }
     }

@@ -15,14 +15,19 @@ import { CARTOON_HITORY } from './constans';
  * @param cartoonPath 动漫地址
  */
 export function getCartoonHistory(
-  cartoonPath?: string
-) {
-  const cartoonInfos: { [key: string]: ICartoonHistory } | undefined = store.get(CARTOON_HITORY);
+  cartoonPath?: undefined
+): { [key: string]: ICartoonHistory } | undefined;
+export function getCartoonHistory(
+  cartoonPath: string
+): ICartoonHistory | undefined;
 
-  if (cartoonPath) {
-    return cartoonInfos && cartoonInfos[cartoonPath];
-  }
-  return cartoonInfos;
+export function getCartoonHistory(cartoonPath: any): any {
+  const cartoonInfos:
+    | { [key: string]: ICartoonHistory }
+    | undefined = store.get(CARTOON_HITORY);
+
+console.log(cartoonInfos);
+  return cartoonPath ? cartoonInfos && cartoonInfos[cartoonPath] : cartoonInfos;
 }
 
 /**
@@ -41,7 +46,10 @@ export function setCartoonHistory(
     latestChapter
   } = cartoonInfo;
   const { sectionId, sectionTitle, sectionHref } = sectionInfo;
-  let cartoonHistoryInfo = getCartoonHistory(cartoonInfo.detailHref) as ICartoonHistory | undefined;
+  /** 所有的动漫历史记录 */
+  const allCartoonHistoryInfo = getCartoonHistory();
+  /** 当前动漫的历史记录 */
+  let cartoonHistoryInfo = allCartoonHistoryInfo ? allCartoonHistoryInfo[cartoonInfo.detailHref] : null;
 
   if (!cartoonHistoryInfo) {
     cartoonHistoryInfo = {
@@ -77,5 +85,5 @@ export function setCartoonHistory(
       });
     }
   }
-  store.set(CARTOON_HITORY, {[detailHref]: cartoonHistoryInfo});
+  store.set(CARTOON_HITORY, { ...allCartoonHistoryInfo || {}, [detailHref]: cartoonHistoryInfo });
 }

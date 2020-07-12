@@ -9,6 +9,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '@redux/reducers';
+import { Grid } from 'antd-mobile';
 import UserInfo from '@components/UserInfo';
 import NormalPage from '@components/NormalPage';
 import NavTab from '@components/NavTab';
@@ -18,6 +19,13 @@ import { autobind } from 'core-decorators';
 
 type IProps = IGlobalReduceState & RouteComponentProps & {};
 class User extends React.Component<IProps> {
+  /** 九宫格数据 */
+  private readonly gridData = [
+    {
+      icon: 'history',
+      text: '历史记录'
+    }
+  ];
   /** 去登录 */
   @autobind
   public login() {
@@ -38,6 +46,7 @@ class User extends React.Component<IProps> {
     const { isLogin, userInfo } = this.props;
 
     console.log(isLogin);
+
     return (
       <NormalPage showHeader={false} customFooter={<NavTab />} showFooter>
         <div className="User-Page-Wrapper">
@@ -45,6 +54,23 @@ class User extends React.Component<IProps> {
             userInfo={userInfo}
             toLogin={this.login}
             toEditHeaderPortrait={this.editHeaderPortrait}
+          />
+          <Grid
+            data={this.gridData}
+            renderItem={(item) => {
+              return (
+                <div className={`gird-item gird-item-${item?.icon}`}>
+                  <div className="gird-text">{item?.text}</div>
+                </div>
+              );
+            }}
+            onClick={(item) => {
+              this.props.history.push({
+                pathname: '/history'
+              });
+            }}
+            activeStyle={false}
+            hasLine={false}
           />
         </div>
       </NormalPage>
