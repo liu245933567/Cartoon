@@ -15,8 +15,6 @@ export const getCrawlerListURL = '/admin/getCrawlerList.json';
 
 /** 动漫首页信息 */
 export const cartoonHomeInfoURL = '/cartoon/cartoonHome.json';
-/** 动漫列表 */
-export const cartoonListURL = '/cartoon/cartoonList.json';
 /** 动漫详情 */
 export const cartoonDetailURL = '/cartoon/cartoonDetail.json';
 /** 章节详情 */

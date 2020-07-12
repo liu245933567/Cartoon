@@ -24,8 +24,8 @@ const CartoonInfo: React.FC<IPorps> = ({ cartoonInfo }: IPorps) => {
       </div>
       <div className="cartoon-info">
         <h4 className="cartoon-name">
-          <span>{cartoonInfo.cartoonName}</span>
-          <i className="cartoon-status"></i>
+          <span>《{cartoonInfo.cartoonName}》</span>
+          <span className="cartoon-status">{cartoonInfo.state}</span>
         </h4>
         <div className="cartoon-autor">作者: {cartoonInfo.cartoonAuthor}</div>
         <div className="cartoon-updata">
