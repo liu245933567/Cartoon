@@ -7,8 +7,14 @@
     background-position: center 0.4rem;
     background-size: 1rem;
     position: relative;
+    &-edit {
+      background-image: url("~@icons/edit-user-info.png");
+    }
     &-history {
-      background-image: url("~@icons/history-iconpng.png");
+      background-image: url("~@icons/history-icon.png");
+    }
+    &-logOut {
+      background-image: url("~@icons/exit-login.png");
     }
     .gird-text {
       position: absolute;

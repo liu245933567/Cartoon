@@ -1,5 +1,5 @@
 .UserInfo-Component-Wrapper {
-  padding: 0.266667rem /* 20/75 */;
+  padding: $bigInterval;
   .brief-info-wrapper {
     display: flex;
     .info-area {
@@ -34,7 +34,7 @@
           background-repeat: no-repeat;
           background-size: 0.213333rem /* 16/75 */;
           background-position: 0.253333rem /* 19/75 */ center;
-          background-image: url("~@icons/tip-icon.png");
+          background-image: url('~@icons/tip-icon.png');
           color: #8a8a8a;
           background-color: #f2f5f5;
           font-size: 0.213333rem /* 16/75 */;
@@ -42,9 +42,11 @@
       }
     }
     .user-picture {
-      width: 1.6rem /* 120/75 */;
-      height: 1.6rem /* 120/75 */;
+      $imgWidth: 2rem;
+      width: $imgWidth;
+      height: $imgWidth;
       overflow: hidden;
+      border-radius: 50%;
       img {
         width: 100%;
       }

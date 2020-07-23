@@ -3,7 +3,7 @@
  * @Description: 用户首页
  * @Date: 2020-07-03 16:03:36
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-09 12:17:59
+ * @Last Modified time: 2020-07-23 17:57:52
  */
 
 import React from 'react';
@@ -22,26 +22,60 @@ class User extends React.Component<IProps> {
   /** 九宫格数据 */
   private readonly gridData = [
     {
+      icon: 'edit',
+      text: '修改信息'
+    },
+    {
       icon: 'history',
       text: '历史记录'
+    },
+    {
+      icon: 'logOut',
+      text: '退出登录'
     }
   ];
+
   /** 去登录 */
   @autobind
   public login() {
-    console.log(2222);
     this.props.history.push({
       pathname: '/login'
     });
   }
+
   /** 去头像编辑页 */
   @autobind
   public editHeaderPortrait() {
-    console.log(33333);
     this.props.history.push({
       pathname: '/imageUploader'
     });
   }
+
+  /**
+   * 点击九宫格
+   * @param code 点击类型
+   */
+  @autobind
+  public clickGird(code: 'edit' | 'history' | 'logOut') {
+    switch (code) {
+      case 'edit': {
+        this.editHeaderPortrait();
+        break;
+      }
+      case 'history': {
+        this.props.history.push({
+          pathname: '/history'
+        });
+        break;
+      }
+      case 'logOut': {
+        console.log(111);
+        break;
+      }
+      default:
+    }
+  }
+
   render() {
     const { isLogin, userInfo } = this.props;
 
@@ -65,9 +99,7 @@ class User extends React.Component<IProps> {
               );
             }}
             onClick={(item) => {
-              this.props.history.push({
-                pathname: '/history'
-              });
+              this.clickGird(item?.icon || '');
             }}
             activeStyle={false}
             hasLine={false}
