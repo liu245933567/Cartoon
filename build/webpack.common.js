@@ -64,6 +64,7 @@ module.exports = {
       '@views': resolve(__dirname, '../src/views'),
       '@icons': resolve(__dirname, '../src/assets/icons'),
       '@styles': resolve(__dirname, '../src/styles'),
+      '@regExps': resolve(__dirname, '../src/regExps'),
       '@typings': resolve(__dirname, '../src/typings')
     }
   },
