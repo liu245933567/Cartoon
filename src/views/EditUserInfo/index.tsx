@@ -3,7 +3,7 @@
  * @Description: 信息修改页
  * @Date: 2020-07-23 18:04:26
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-23 23:32:46
+ * @Last Modified time: 2020-07-24 14:07:00
  */
 
 import React from 'react';
@@ -22,8 +22,8 @@ type IState = {
   photoIndex: number;
   userInfo: {
     nickName: string;
-    brithday: String;
-    gender: String;
+    brithday: string;
+    gender: string;
   };
 };
 class EditUserInfo extends React.Component<{}, IState> {

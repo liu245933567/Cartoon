@@ -59,3 +59,13 @@ export interface ILoginParam {
   /** 密码 */
   password: string;
 }
+
+/** 修改用户信息接口 */
+export type ModifyUserInfoParam = {
+  /** 昵称 */
+  nickName: string;
+  /** 出生日期 */
+  brithday: string;
+  /** 性别 */
+  gender: string;
+};

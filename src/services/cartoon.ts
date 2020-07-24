@@ -35,7 +35,10 @@ export function sectionDeatilInfo(params: ISectionDeatilInfoReq) {
 
 /** 查询动漫 */
 export function searchCartoon(params: ISearchCartonReq) {
-  return post<ISearchCartonReq, CartoonOtherRecommendInfo[]>(searchCartoonlURL, params);
+  return post<ISearchCartonReq, CartoonOtherRecommendInfo[]>(
+    searchCartoonlURL,
+    params
+  );
 }
 
 /** 查询动漫观看历史 */

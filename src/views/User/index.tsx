@@ -3,7 +3,7 @@
  * @Description: 用户首页
  * @Date: 2020-07-03 16:03:36
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-23 17:57:52
+ * @Last Modified time: 2020-07-24 14:36:56
  */
 
 import React from 'react';
@@ -14,10 +14,13 @@ import UserInfo from '@components/UserInfo';
 import NormalPage from '@components/NormalPage';
 import NavTab from '@components/NavTab';
 import { IGlobalReduceState } from '@redux/reducers/global';
+import { requestLogOut } from '@redux/actions/user';
+import { bindActionCreators } from 'redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { autobind } from 'core-decorators';
 
-type IProps = IGlobalReduceState & RouteComponentProps & {};
+type IProps = IGlobalReduceState &
+  RouteComponentProps & { requestLogOut: typeof requestLogOut };
 class User extends React.Component<IProps> {
   /** 九宫格数据 */
   private readonly gridData = [
@@ -70,6 +73,7 @@ class User extends React.Component<IProps> {
       }
       case 'logOut': {
         console.log(111);
+        this.props.requestLogOut();
         break;
       }
       default:
@@ -110,4 +114,13 @@ class User extends React.Component<IProps> {
   }
 }
 
-export default connect((state: AppState) => state.global)(withRouter(User));
+export default connect(
+  (state: AppState) => state.global,
+  (dispatch) =>
+    bindActionCreators(
+      {
+        requestLogOut
+      },
+      dispatch
+    )
+)(withRouter(User));
