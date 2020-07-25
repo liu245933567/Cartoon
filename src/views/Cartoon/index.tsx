@@ -3,7 +3,7 @@
  * @Description: 漫画首页
  * @Date: 2020-07-01 16:34:39
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-09 21:11:57
+ * @Last Modified time: 2020-07-24 14:54:57
  */
 
 import React from 'react';
@@ -97,14 +97,14 @@ class Cartoon extends React.Component<IProps> {
               });
             }}
           />
-          {!this.showSeach ?
+          {!this.showSeach ? (
             <Scroll>
               <div className="catrgorys-wrapper">
-                {categorys.map((category) =>
+                {categorys.map((category) => (
                   <div key={category.categoryKey} className="catrgory-item">
                     {category.category}
                   </div>
-                )}
+                ))}
               </div>
               <div className="bbbbbbb">
                 <Scroll scrollX scrollY={false} stopPropagation>
@@ -138,14 +138,15 @@ class Cartoon extends React.Component<IProps> {
                   />
                 );
               })}
-            </Scroll> :
+            </Scroll>
+          ) : (
             <div className="search-popup">
               <CartoonNormalList
                 cartoonList={searchResultList}
                 clickHandle={this.toCheckDetail}
               />
             </div>
-          }
+          )}
         </div>
       </NormalPage>
     );

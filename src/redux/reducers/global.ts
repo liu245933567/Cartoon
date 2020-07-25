@@ -3,7 +3,7 @@
  * @Description: 全局状态管理参数
  * @Date: 2020-07-03 23:28:42
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-24 14:23:09
+ * @Last Modified time: 2020-07-24 16:16:18
  */
 
 import { IGlobalAction } from '../actions/global';
@@ -12,7 +12,8 @@ import { IUserResInfo } from '@typings/user';
 import {
   CHANGE_LOADING_STATUS,
   REQUEST_LOGIN_REGISTER,
-  REQUEST_LOGIN_OUT
+  REQUEST_LOGIN_OUT,
+  REQUEST_MODIFY_USER_INFO
 } from '../constants';
 
 const initState = {
@@ -53,6 +54,12 @@ const global = (
         ...state,
         isLogin: false,
         userInfo: null
+      };
+    }
+
+    case REQUEST_MODIFY_USER_INFO: {
+      return {
+        ...state
       };
     }
 

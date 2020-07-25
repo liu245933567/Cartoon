@@ -1,6 +1,10 @@
 import { Dispatch } from 'redux';
-import { REQUEST_LOGIN_REGISTER, REQUEST_LOGIN_OUT } from '../constants';
-import { IUserResInfo, ILoginParam } from '@typings/user';
+import {
+  REQUEST_LOGIN_REGISTER,
+  REQUEST_LOGIN_OUT,
+  REQUEST_MODIFY_USER_INFO
+} from '../constants';
+import { IUserResInfo, ILoginParam, ModifyUserInfoParam } from '@typings/user';
 import { loginRegister, loginStatus, logOut } from '@services/user';
 
 /** 请求登陆注册接口 */
@@ -67,5 +71,31 @@ export const requestLoginStatus = (callback?: () => void) => async (
   }
 };
 
+/** 请求修改用户信息接口 */
+export interface IRequestModifyUserInfoAction {
+  type: REQUEST_MODIFY_USER_INFO;
+  result: null;
+}
+
+/** 请求修改用户信息接口 */
+export const requestModifyUserInfo = (
+  params: ModifyUserInfoParam,
+  callback?: () => void
+) => async (dispatch: Dispatch<IRequestModifyUserInfoAction>) => {
+  const { data } = await loginStatus();
+
+  if (data.isOk) {
+    dispatch({
+      type: REQUEST_MODIFY_USER_INFO,
+      result: null
+    });
+    if (typeof callback === 'function') {
+      callback();
+    }
+  }
+};
 /** 总类型 */
-export type IUserAction = IRequestLoginRegisterAction | IRequestLogOutAction;
+export type IUserAction =
+  | IRequestLoginRegisterAction
+  | IRequestLogOutAction
+  | IRequestModifyUserInfoAction;

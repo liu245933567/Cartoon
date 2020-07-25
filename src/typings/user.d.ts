@@ -63,9 +63,11 @@ export interface ILoginParam {
 /** 修改用户信息接口 */
 export type ModifyUserInfoParam = {
   /** 昵称 */
-  nickName: string;
+  nickname: string;
   /** 出生日期 */
   brithday: string;
   /** 性别 */
   gender: string;
+  /** 个性签名 */
+  motto: string;
 };

@@ -3,7 +3,7 @@
  * @Description: 信息修改页
  * @Date: 2020-07-23 18:04:26
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-24 14:07:00
+ * @Last Modified time: 2020-07-24 15:46:26
  */
 
 import React from 'react';
@@ -13,22 +13,32 @@ import { autobind } from 'core-decorators';
 import { PhotoSlider } from 'react-photo-view';
 import { uploader } from '@services/user';
 import { DatePicker, Picker } from 'antd-mobile';
+import { QINIUHOST } from '@config/index';
 import moment from 'moment';
+import { connect } from 'react-redux';
+import { AppState } from '@redux/reducers';
+import { IGlobalReduceState } from '@redux/reducers/global';
+import { ModifyUserInfoParam } from '@typings/user';
 import 'react-photo-view/dist/index.css';
 
+type IProps = IGlobalReduceState;
 type IState = {
   images: string[];
   visible: boolean;
   photoIndex: number;
-  userInfo: {
-    nickName: string;
-    brithday: string;
-    gender: string;
-  };
+  userInfo: ModifyUserInfoParam;
 };
-class EditUserInfo extends React.Component<{}, IState> {
+
+class EditUserInfo extends React.Component<IProps, IState> {
   public nameRef: React.RefObject<HTMLDivElement>;
-  constructor(props: any) {
+  constructor(props: IProps) {
+    const { nickname, brithday, gender, motto } = props.userInfo || {
+      nickname: '老铁',
+      brithday: '1991-12-24',
+      gender: 'male',
+      motto: ''
+    };
+
     super(props);
     this.nameRef = React.createRef();
     this.state = {
@@ -37,9 +47,10 @@ class EditUserInfo extends React.Component<{}, IState> {
       visible: false,
       photoIndex: 0,
       userInfo: {
-        nickName: '山有扶苏',
-        brithday: '1991-12-24',
-        gender: 'male'
+        nickname,
+        brithday,
+        gender,
+        motto: motto || ''
       }
     };
   }
@@ -120,7 +131,11 @@ class EditUserInfo extends React.Component<{}, IState> {
     this.setState({ photoIndex });
   }
 
-  public setUserInfo(type: 'nickName' | 'brithday' | 'gender', value: string) {
+  /** 设置状态信息 */
+  public setUserInfo(
+    type: 'nickname' | 'brithday' | 'gender' | 'motto',
+    value: string
+  ) {
     const { userInfo } = this.state;
 
     this.setState({
@@ -139,7 +154,7 @@ class EditUserInfo extends React.Component<{}, IState> {
         <div className="Edit-UserInfo-Page">
           <ImagePicker
             files={images.map((imageUrl) => ({
-              url: `http://qiniu.yanyuge.xyz/${imageUrl}`
+              url: `${QINIUHOST}${imageUrl}`
             }))}
             onChange={this.onChange}
             onImageClick={(index, fs) => {
@@ -150,7 +165,7 @@ class EditUserInfo extends React.Component<{}, IState> {
           />
           <PhotoSlider
             images={images.map((item) => ({
-              src: `http://qiniu.yanyuge.xyz/${item}`
+              src: `${QINIUHOST}${item}`
             }))}
             visible={visible}
             onClose={() => this.setVisible(false)}
@@ -159,12 +174,12 @@ class EditUserInfo extends React.Component<{}, IState> {
           />
           <div className="input-info-wrapper">
             <div className="add-tag">
-              <span>{userInfo.nickName || '请输入昵称'}</span>
+              <span>{userInfo.nickname || '请输入昵称'}</span>
               <input
-                value={userInfo.nickName}
+                value={userInfo.nickname}
                 placeholder="请输入昵称"
                 onChange={(e) => {
-                  this.setUserInfo('nickName', e.target.value);
+                  this.setUserInfo('nickname', e.target.value);
                 }}
               />
             </div>
@@ -173,6 +188,10 @@ class EditUserInfo extends React.Component<{}, IState> {
               <textarea
                 placeholder="您还没有编辑一个个性签名哦~"
                 className="motto-text"
+                value={userInfo.motto}
+                onChange={(e) => {
+                  this.setUserInfo('motto', e.target.value);
+                }}
               />
             </div>
 
@@ -230,4 +249,4 @@ class EditUserInfo extends React.Component<{}, IState> {
   }
 }
 
-export default EditUserInfo;
+export default connect((state: AppState) => state.global)(EditUserInfo);
