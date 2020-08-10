@@ -13,7 +13,8 @@ import {
   CHANGE_LOADING_STATUS,
   REQUEST_LOGIN_REGISTER,
   REQUEST_LOGIN_OUT,
-  REQUEST_MODIFY_USER_INFO
+  REQUEST_MODIFY_USER_INFO,
+  REQUEST_USER_HEADPORTRAITS
 } from '../constants';
 
 const initState = {
@@ -21,13 +22,15 @@ const initState = {
   isLoading: false,
   /** 是否处于登陆状态 */
   isLogin: false,
-  userInfo: null
+  userInfo: null,
+  headProtraits: []
 };
 
 export type IGlobalReduceState = {
   isLoading: boolean;
   isLogin: boolean;
   userInfo: IUserResInfo | null;
+  headProtraits: string[];
 };
 
 /** 全局 reducer */
@@ -59,7 +62,14 @@ const global = (
 
     case REQUEST_MODIFY_USER_INFO: {
       return {
-        ...state
+        ...state,
+        userInfo: action.result
+      };
+    }
+    case REQUEST_USER_HEADPORTRAITS: {
+      return {
+        ...state,
+        headProtraits: action.result
       };
     }
 

@@ -15,13 +15,18 @@ import { uploader } from '@services/user';
 import { DatePicker, Picker } from 'antd-mobile';
 import { QINIUHOST } from '@config/index';
 import moment from 'moment';
+import { getHeadPortrait } from '@services/user';
 import { connect } from 'react-redux';
 import { AppState } from '@redux/reducers';
+import { bindActionCreators } from 'redux';
+import { requestModifyUserInfo } from '@redux/actions/user';
 import { IGlobalReduceState } from '@redux/reducers/global';
 import { ModifyUserInfoParam } from '@typings/user';
 import 'react-photo-view/dist/index.css';
 
-type IProps = IGlobalReduceState;
+type IProps = IGlobalReduceState & {
+  requestModifyUserInfo: typeof requestModifyUserInfo;
+};
 type IState = {
   images: string[];
   visible: boolean;
@@ -53,6 +58,19 @@ class EditUserInfo extends React.Component<IProps, IState> {
         motto: motto || ''
       }
     };
+  }
+
+  UNSAFE_componentWillMount() {
+    this.toGetHeadPortrait();
+  }
+
+  async toGetHeadPortrait() {
+    const { data } = await getHeadPortrait();
+
+    console.log(data.result);
+    this.setState({
+      images: data.result || []
+    });
   }
 
   /**
@@ -143,6 +161,20 @@ class EditUserInfo extends React.Component<IProps, IState> {
         ...userInfo,
         [type]: value
       }
+    });
+  }
+
+  /** 确认修改 */
+  @autobind
+  confirmModify() {
+    const { nickname, brithday, gender, motto } = this.state.userInfo;
+
+    console.log(11111111111);
+    this.props.requestModifyUserInfo({
+      nickname,
+      brithday,
+      gender,
+      motto
     });
   }
 
@@ -241,7 +273,7 @@ class EditUserInfo extends React.Component<IProps, IState> {
             </Picker>
           </div>
           <div className="save-btn">
-            <button>保存修改</button>
+            <button onClick={this.confirmModify}>保存修改</button>
           </div>
         </div>
       </NormalPage>
@@ -249,4 +281,13 @@ class EditUserInfo extends React.Component<IProps, IState> {
   }
 }
 
-export default connect((state: AppState) => state.global)(EditUserInfo);
+export default connect(
+  (state: AppState) => state.global,
+  (dispatch) =>
+    bindActionCreators(
+      {
+        requestModifyUserInfo
+      },
+      dispatch
+    )
+)(EditUserInfo);
