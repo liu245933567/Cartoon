@@ -3,7 +3,7 @@
  * @Description: 用户信息展示
  * @Date: 2020-07-03 15:21:50
  * @Last Modified by: LiuYh
- * @Last Modified time: 2020-07-03 16:39:18
+ * @Last Modified time: 2020-07-23 18:07:08
  */
 
 import React from 'react';
@@ -26,6 +26,13 @@ const UserInfo: React.FC<IProps> = ({
   return (
     <div className="UserInfo-Component-Wrapper">
       <div className="brief-info-wrapper">
+        <div className="user-picture">
+          <img
+            onClick={toEditHeaderPortrait}
+            src={userInfo?.headPortrait || userCoverImage}
+          ></img>
+        </div>
+
         <div className="info-area">
           <div className="user-name" onClick={toLogin}>
             {userInfo?.nickname || '登录/注册'}
@@ -37,12 +44,6 @@ const UserInfo: React.FC<IProps> = ({
             <div className="user-btn-item user-btn-item-signIn">签到有奖</div>
             <div className="user-btn-item user-btn-item-message">消息</div>
           </div> */}
-        </div>
-        <div className="user-picture">
-          <img
-            onClick={toEditHeaderPortrait}
-            src={userInfo?.headPortrait || userCoverImage}
-          ></img>
         </div>
       </div>
 

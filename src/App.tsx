@@ -5,7 +5,7 @@ import loadable from '@loadable/component';
 import store from '@redux/store';
 import { requestLoginStatus } from '@redux/actions/user';
 import { cartoonHistory } from '@services/cartoon';
-import {initCartoonHistory} from '@store/cartoon';
+import { initCartoonHistory } from '@store/cartoon';
 
 /** 导航页 */
 // const NavigationComponent = loadable(() =>
@@ -25,7 +25,7 @@ const SectionDeatil = loadable(() => import('./views/SectionDetail'));
 /** 登录页 */
 const Login = loadable(() => import('./views/Login'));
 /** 头像上传 */
-const ImageUploader = loadable(() => import('./views/ImageUploader'));
+const ImageUploader = loadable(() => import('./views/EditUserInfo'));
 
 class App extends React.Component {
   public componentDidMount() {

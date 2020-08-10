@@ -1,6 +1,6 @@
-const path = require('path')
-const webpack = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -28,4 +28,4 @@ module.exports = {
       name: '_dll_[name]_[hash:8]'
     })
   ]
-}
+};

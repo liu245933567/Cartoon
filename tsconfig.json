@@ -36,6 +36,7 @@
       "@images/*": ["src/assets/images/*"],
       "@icons/*": ["src/assets/icons/*"],
       "@styles/*": ["src/styles/*"],
+      "@regExps/*": ["src/regExps/*"],
       "@typings/*": ["src/typings/*"]
     }
   },

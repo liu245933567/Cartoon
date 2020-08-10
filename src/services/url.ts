@@ -5,6 +5,13 @@ export const loginRegisterURL = '/user/loginRegister.json';
 /** 校验登录接口 */
 export const loginStatusURL = '/user/loginStatus.json';
 
+/** 修改用户资料接口地址 */
+export const modifyUserInfoURL = '/user/modifyUserInfo.json';
+/** 获取头像列表接口地址 */
+export const getHeadPortraitURL = '/user/getHeadPortrait.json';
+/** 退出登录接口地址 */
+export const logOutURL = '/user/logOut.json';
+
 /** 上传文件接口 */
 export const uploaderURL = '/user/uploader.json';
 

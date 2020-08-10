@@ -1,0 +1,522 @@
+{
+  "code": 200,
+  "message": "success",
+  "result": {
+    "coverPictureSrc": "http://i.youzipi.net/mh/cover/2020/04/19/34f3a74a4b.JPG/420",
+    "cartoonName": "重生归来的战士",
+    "state": "连载",
+    "upDataTime": "2020-07-27 09:29",
+    "cartoonAuthor": "多蕴漫文化",
+    "cartoonCategory": "少年热血",
+    "alphabetIndex": "Z",
+    "alias": "",
+    "latestChapter": "连更通知",
+    "keyWords": "冒险",
+    "popularity": "0",
+    "introduction": "【每周五更新】某天，彦伟收到了失踪五年的双胞胎弟弟的讣告和他的遗物——怀表。他在摩挲怀表时偶然发现里面藏有俊伟留下的语音日记。从语音日记中得知，在次元和宇宙交叉的异世界中有一座太阳神塔——方尖塔。而弟弟正是在登塔的途中遭队友背叛惨死！彦伟得知这一切后决定循着弟弟的蹬塔之路，为弟弟复仇。",
+    "recommendList": [
+      {
+        "cartoonName": "星武神诀",
+        "coverPictureSrc": "http://i.youzipi.net/mh/cover/2019/11/19/2415e15f48.jpg/420",
+        "detailHref": "/comic/7/index.html",
+        "latestChapter": "第365话"
+      },
+      {
+        "cartoonName": "大话降龙1",
+        "coverPictureSrc": "http://i.youzipi.net/mh/cover/2019/11/19/4080f73f65.jpg/420",
+        "detailHref": "/comic/12/index.html",
+        "latestChapter": "灵尾狐仙"
+      },
+      {
+        "cartoonName": "勇者约吗",
+        "coverPictureSrc": "http://i.youzipi.net/mh/cover/2020/01/05/34e92f007b.jpg",
+        "detailHref": "/comic/13/index.html",
+        "latestChapter": "417·刷猪小王子"
+      },
+      {
+        "cartoonName": "超神游戏",
+        "coverPictureSrc": "http://i.youzipi.net/mh/cover/2019/11/19/1235b732ab.jpg/420",
+        "detailHref": "/comic/14/index.html",
+        "latestChapter": "第二季52 胜利"
+      },
+      {
+        "cartoonName": "妖魔合伙人",
+        "coverPictureSrc": "http://i.youzipi.net/mh/cover/2019/11/19/1502fcd199.jpg/420",
+        "detailHref": "/comic/2/index.html",
+        "latestChapter": "第12话  “刹车”失灵"
+      },
+      {
+        "cartoonName": "杀狼贤者",
+        "coverPictureSrc": "http://i.youzipi.net/mh/cover/2019/11/19/182fda7c40.jpg/420",
+        "detailHref": "/comic/177/index.html",
+        "latestChapter": "145,慢慢长夜·一"
+      },
+      {
+        "cartoonName": "银之守墓人",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/180/index.html",
+        "latestChapter": "第605墓：错位"
+      },
+      {
+        "cartoonName": "亡灵之王",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/185/index.html",
+        "latestChapter": "第515话 第七个遗产16下"
+      },
+      {
+        "cartoonName": "鬼灯的冷彻",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/201/index.html",
+        "latestChapter": "第271话 所谓育成"
+      },
+      {
+        "cartoonName": "食色天下",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/187/index.html",
+        "latestChapter": "乱斗1"
+      },
+      {
+        "cartoonName": "华夏",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/212/index.html",
+        "latestChapter": "御树屋"
+      },
+      {
+        "cartoonName": "绅士魔王",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/267/index.html",
+        "latestChapter": "给你的可乐"
+      },
+      {
+        "cartoonName": "血色苍穹",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/193/index.html",
+        "latestChapter": "“水星速递”联动章节2"
+      },
+      {
+        "cartoonName": "勇者大冒险",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/194/index.html",
+        "latestChapter": "第二百三十三章 最终章"
+      },
+      {
+        "cartoonName": "戒魔人",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/196/index.html",
+        "latestChapter": "第657话 贵族与亡灵炸弹"
+      },
+      {
+        "cartoonName": "塔奇",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/204/index.html",
+        "latestChapter": "大结局（下）"
+      },
+      {
+        "cartoonName": "活城",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/205/index.html",
+        "latestChapter": "后记：纪念那个活的城"
+      },
+      {
+        "cartoonName": "妖精的尾巴",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/302/index.html",
+        "latestChapter": "第24话 二楼"
+      },
+      {
+        "cartoonName": "斗罗大陆3龙王传说",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/214/index.html",
+        "latestChapter": "第三十九话 突破！第"
+      },
+      {
+        "cartoonName": "驱魔少年",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/224/index.html",
+        "latestChapter": "驱魔师"
+      },
+      {
+        "cartoonName": "海妖",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/225/index.html",
+        "latestChapter": "第222话"
+      },
+      {
+        "cartoonName": "不死者",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/236/index.html",
+        "latestChapter": "完结声明"
+      },
+      {
+        "cartoonName": "木兰无长兄",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/240/index.html",
+        "latestChapter": "282后会有期"
+      },
+      {
+        "cartoonName": "无罪之城",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/241/index.html",
+        "latestChapter": "第三百九十二话"
+      },
+      {
+        "cartoonName": "野有蔓草",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/475/index.html",
+        "latestChapter": "第三十四话 分歧"
+      },
+      {
+        "cartoonName": "我是废柴",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/250/index.html",
+        "latestChapter": "完结公告"
+      },
+      {
+        "cartoonName": "我的逆天神器",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/252/index.html",
+        "latestChapter": "天罡情仇篇：终章"
+      },
+      {
+        "cartoonName": "金田一少年事件簿R",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/253/index.html",
+        "latestChapter": "金田一二三绑架杀人事"
+      },
+      {
+        "cartoonName": "妹子与科学",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/255/index.html",
+        "latestChapter": "510话 对立的力量"
+      },
+      {
+        "cartoonName": "非常契约",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/257/index.html",
+        "latestChapter": "第一百三十二话 终章"
+      },
+      {
+        "cartoonName": "噬龙蚁",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/259/index.html",
+        "latestChapter": "第290话"
+      },
+      {
+        "cartoonName": "全金属狂潮",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/260/index.html",
+        "latestChapter": "10-25"
+      },
+      {
+        "cartoonName": "藏海花",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/264/index.html",
+        "latestChapter": "第91话"
+      },
+      {
+        "cartoonName": "怒良晴空",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/364/index.html",
+        "latestChapter": "第三十话 危机！往返"
+      },
+      {
+        "cartoonName": "黑皇圣冠",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/278/index.html",
+        "latestChapter": "（免费）情人节发糖"
+      },
+      {
+        "cartoonName": "爵迹",
+        "coverPictureSrc": "/loading.gif",
+        "detailHref": "/comic/283/index.html",
+        "latestChapter": "前传·幽碧峡谷2 主笔 丁东"
+      }
+    ],
+    "sectionList": [
+      {
+        "sectionTitle": "44.送上门的小弟",
+        "sectionHref": "/comic/3598/382392.html",
+        "sectionId": 382392,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "43.技艺超常的初学者",
+        "sectionHref": "/comic/3598/382391.html",
+        "sectionId": 382391,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "42.夺回宝物",
+        "sectionHref": "/comic/3598/381365.html",
+        "sectionId": 381365,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "41.夜袭铁匠铺",
+        "sectionHref": "/comic/3598/381362.html",
+        "sectionId": 381362,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "投月票得周边",
+        "sectionHref": "/comic/3598/379744.html",
+        "sectionId": 379744,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "40.请教我冶炼术",
+        "sectionHref": "/comic/3598/379743.html",
+        "sectionId": 379743,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "39.遗失的重要之人",
+        "sectionHref": "/comic/3598/379742.html",
+        "sectionId": 379742,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "38.真正的开始",
+        "sectionHref": "/comic/3598/376764.html",
+        "sectionId": 376764,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "37.独吞一切的捕食者",
+        "sectionHref": "/comic/3598/376763.html",
+        "sectionId": 376763,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "36.预知未来的能力",
+        "sectionHref": "/comic/3598/374839.html",
+        "sectionId": 374839,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "35.这才是真正的较量",
+        "sectionHref": "/comic/3598/374610.html",
+        "sectionId": 374610,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "34.诱人的功绩值和神器",
+        "sectionHref": "/comic/3598/374608.html",
+        "sectionId": 374608,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "33.独闯的极致快乐",
+        "sectionHref": "/comic/3598/374607.html",
+        "sectionId": 374607,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "32.我们弃权了",
+        "sectionHref": "/comic/3598/373260.html",
+        "sectionId": 373260,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "31.穷途末路",
+        "sectionHref": "/comic/3598/373259.html",
+        "sectionId": 373259,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "30.给弟弟的第一份礼物",
+        "sectionHref": "/comic/3598/370476.html",
+        "sectionId": 370476,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "29.黑之刀刃下的亡魂",
+        "sectionHref": "/comic/3598/370475.html",
+        "sectionId": 370475,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "28.该插手还是该旁观？",
+        "sectionHref": "/comic/3598/368866.html",
+        "sectionId": 368866,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "27.怪物狩猎人",
+        "sectionHref": "/comic/3598/368480.html",
+        "sectionId": 368480,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "26.熟悉的感觉中透着异样",
+        "sectionHref": "/comic/3598/367699.html",
+        "sectionId": 367699,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "25.原来他一直在找这个",
+        "sectionHref": "/comic/3598/367698.html",
+        "sectionId": 367698,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "24.神震怒了！",
+        "sectionHref": "/comic/3598/365085.html",
+        "sectionId": 365085,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "23.我们要复仇！",
+        "sectionHref": "/comic/3598/365084.html",
+        "sectionId": 365084,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "22.趁乱搅局！",
+        "sectionHref": "/comic/3598/362931.html",
+        "sectionId": 362931,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "21.温蒂妮之盏",
+        "sectionHref": "/comic/3598/362930.html",
+        "sectionId": 362930,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "20.青花岛大战",
+        "sectionHref": "/comic/3598/359130.html",
+        "sectionId": 359130,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "19.分开是最好的选择",
+        "sectionHref": "/comic/3598/359129.html",
+        "sectionId": 359129,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "18.混做同伴的“清杀者”",
+        "sectionHref": "/comic/3598/359128.html",
+        "sectionId": 359128,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "17.最会讲价的人",
+        "sectionHref": "/comic/3598/359127.html",
+        "sectionId": 359127,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "16.依附强者的生存法则",
+        "sectionHref": "/comic/3598/356354.html",
+        "sectionId": 356354,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "15.以彼之道还施彼身",
+        "sectionHref": "/comic/3598/356353.html",
+        "sectionId": 356353,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "14.人肉仓库",
+        "sectionHref": "/comic/3598/356148.html",
+        "sectionId": 356148,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "13.寻找蜥蜴人",
+        "sectionHref": "/comic/3598/356147.html",
+        "sectionId": 356147,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "12.神秘的兄弟俩",
+        "sectionHref": "/comic/3598/355730.html",
+        "sectionId": 355730,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "11.弱肉强食的E区",
+        "sectionHref": "/comic/3598/355729.html",
+        "sectionId": 355729,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "10.巴托利的吸血剑",
+        "sectionHref": "/comic/3598/355728.html",
+        "sectionId": 355728,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "9.吸血君主的蓝色蚁穴",
+        "sectionHref": "/comic/3598/355727.html",
+        "sectionId": 355727,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "8.险胜红色蜈蚣",
+        "sectionHref": "/comic/3598/355726.html",
+        "sectionId": 355726,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "7.进入地下城",
+        "sectionHref": "/comic/3598/355725.html",
+        "sectionId": 355725,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "6.弟弟的影子",
+        "sectionHref": "/comic/3598/355724.html",
+        "sectionId": 355724,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "连更通知",
+        "sectionHref": "/comic/3598/354802.html",
+        "sectionId": 354802,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "5.独闯A区的玩家",
+        "sectionHref": "/comic/3598/351025.html",
+        "sectionId": 351025,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "4.大战黄铜盔甲人",
+        "sectionHref": "/comic/3598/351024.html",
+        "sectionId": 351024,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "3.有趣的家伙",
+        "sectionHref": "/comic/3598/347634.html",
+        "sectionId": 347634,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "2.以你之名为你复仇",
+        "sectionHref": "/comic/3598/347633.html",
+        "sectionId": 347633,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "1.消失五年的真相",
+        "sectionHref": "/comic/3598/347632.html",
+        "sectionId": 347632,
+        "isWatched": false
+      },
+      {
+        "sectionTitle": "序章",
+        "sectionHref": "/comic/3598/347631.html",
+        "sectionId": 347631,
+        "isWatched": false
+      }
+    ],
+    "detailHref": "/comic/3598/"
+  },
+  "isOk": true
+}

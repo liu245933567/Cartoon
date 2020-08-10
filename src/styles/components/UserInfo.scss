@@ -1,20 +1,33 @@
 .UserInfo-Component-Wrapper {
-  padding: 0.266667rem /* 20/75 */;
+  padding: $bigInterval;
   .brief-info-wrapper {
-    display: flex;
+    .user-picture {
+      $imgWidth: 3.6rem;
+      width: $imgWidth;
+      height: $imgWidth;
+      overflow: hidden;
+      border-radius: 50%;
+      margin: auto;
+      img {
+        width: 100%;
+      }
+    }
+
     .info-area {
-      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       .user-name {
-        font-size: 0.48rem /* 36/75 */;
+        font-size: 0.58rem;
         color: #292929;
+        text-align: center;
+        line-height: 1rem;
       }
       .user-personalized-signature {
-        font-size: 0.266667rem /* 20/75 */;
+        font-size: 0.3rem;
         color: #999999;
         margin-top: $smallInterval;
+        text-align: center;
       }
       .use-info-btn {
         display: flex;
@@ -34,19 +47,11 @@
           background-repeat: no-repeat;
           background-size: 0.213333rem /* 16/75 */;
           background-position: 0.253333rem /* 19/75 */ center;
-          background-image: url("~@icons/tip-icon.png");
+          background-image: url('~@icons/tip-icon.png');
           color: #8a8a8a;
           background-color: #f2f5f5;
           font-size: 0.213333rem /* 16/75 */;
         }
-      }
-    }
-    .user-picture {
-      width: 1.6rem /* 120/75 */;
-      height: 1.6rem /* 120/75 */;
-      overflow: hidden;
-      img {
-        width: 100%;
       }
     }
   }
