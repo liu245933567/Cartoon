@@ -32,7 +32,7 @@
     "core-decorators": "^0.20.0",
     "crypto-js": "^4.0.0",
     "exif-js": "^2.3.0",
-    "lodash-es": "^4.17.15",
+    "lodash-es": "^4.17.21",
     "moment": "^2.27.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
